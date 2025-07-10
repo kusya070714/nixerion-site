@@ -19,34 +19,32 @@
     }
 
     .logo {
-      width: 320px;
-      height: 320px;
+      width: 480px;
+      height: 480px;
       background-image: url('nix-logo-final.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
       opacity: 0;
-      animation: showLogo 2s ease-out forwards;
+      animation: logoIn 2s ease-out forwards, logoOut 1s ease-in forwards 3s;
     }
 
     .greeting {
-      font-size: 44px;
-      margin-top: 30px;
+      font-size: 52px;
+      margin-top: 20px;
       opacity: 0;
-      animation: showGreeting 2s ease-out forwards;
-      animation-delay: 2.5s;
+      animation: greetingIn 1.5s ease-out forwards;
+      animation-delay: 2s;
       position: relative;
-      top: -40px;
+      top: -60px;
+      animation-fill-mode: forwards;
     }
 
     .presentation {
       margin-top: 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       opacity: 0;
-      animation: showPresentation 2s ease-out forwards;
-      animation-delay: 5.5s;
+      animation: textIn 2s ease-out forwards;
+      animation-delay: 5s;
     }
 
     .slide {
@@ -55,28 +53,34 @@
       margin-bottom: 10px;
     }
 
-    @keyframes showLogo {
+    @keyframes logoIn {
       from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+      to   { opacity: 1; transform: scale(1); }
     }
 
-    @keyframes showGreeting {
+    @keyframes logoOut {
+      from { opacity: 1; }
+      to   { opacity: 0; transform: scale(0.9); }
+    }
+
+    @keyframes greetingIn {
       from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes showPresentation {
+    @keyframes textIn {
       from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Важливо: використовуємо div, а не <img>, щоб не було рамки -->
   <div class="logo"></div>
 
-  <div class="greeting">Вітаємо в NyXerion</div>
+  <div class="greeting" style="animation: greetingIn 1.5s ease-out forwards, logoOut 1s ease-in forwards 3.5s;">
+    Вітаємо в NyXerion
+  </div>
 
   <div class="presentation">
     <div class="slide">Щосекунди помирає дитина.</div>
