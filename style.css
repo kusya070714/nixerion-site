@@ -1,14 +1,13 @@
 body {
-  background-color: #000;
-  color: #fff;
-  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0;
   height: 100vh;
-  overflow: hidden;
-  flex-direction: column;
+  background: linear-gradient(135deg, #050505 0%, #1a1a2e 40%, #3c1053 80%, #000000 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 /* Логотип */
