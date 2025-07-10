@@ -1,33 +1,17 @@
 body {
-    background-color: #0f0f0f;
-    color: #e0e0e0;
-    font-family: 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    padding: 2rem;
-    max-width: 800px;
-    margin: auto;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  flex-direction: column;
 }
 
-h1, h2, h3 {
-    color: #ffffff;
-}
-
-a {
-    color: #9ecbff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-code {
-    background-color: #1a1a1a;
-    color: #9effa3;
-    padding: 2px 4px;
-    border-radius: 4px    
-}
-        
+/* Логотип */
 .logo {
   width: 200px;
   height: 200px;
@@ -36,17 +20,27 @@ code {
   background-repeat: no-repeat;
   background-position: center;
   margin-bottom: 20px;
-  opacity: 1; /* тимчасово ставимо 1, щоб бачити одразу */
+  opacity: 1;
 }
-.presentation {
-  width: 100%;
+
+/* Вітання */
+.greeting {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
   text-align: center;
-  margin-top: 50px;
+}
+
+/* Слайди */
+.presentation {
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
 }
 
 .slide {
   opacity: 0;
-  animation: reveal 2s ease-in-out forwards;
+  animation: reveal 2s ease-out forwards;
 }
 
 #slide2 { animation-delay: 3s; }
@@ -55,6 +49,12 @@ code {
 #slide5 { animation-delay: 12s; }
 
 @keyframes reveal {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
