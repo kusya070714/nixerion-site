@@ -25,22 +25,18 @@ code {
     background-color: #1a1a1a;
     color: #9effa3;
     padding: 2px 4px;
-    border-radius: 4px;
+    border-radius: 4px    
 }
+        
 .logo {
-  width: 150px;
-  height: 150px;
-  background-image: url('logo.png'); /* або 'logo.svg', якщо у тебе svg */
+  width: 200px;
+  height: 200px;
+  background-image: url('./logo.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0;
-  animation: fadeIn 2s ease-in-out forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.8); }
-  to   { opacity: 1; transform: scale(1); }
+  margin-bottom: 20px;
+  opacity: 1; /* тимчасово ставимо 1, щоб бачити одразу */
 }
 .presentation {
   width: 100%;
