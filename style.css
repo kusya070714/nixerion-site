@@ -21,6 +21,7 @@ body {
   background-position: center;
   margin-bottom: 20px;
   opacity: 1;
+   border: 2px solid red;
 }
 
 /* Вітання */
