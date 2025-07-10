@@ -6,83 +6,84 @@
   <title>NyXerion</title>
   <style>
     body {
-      background-color: #000;
+      background: linear-gradient(to bottom, #000000, #1a0052);
       color: #fff;
       font-family: 'Segoe UI', sans-serif;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       height: 100vh;
       margin: 0;
       overflow: hidden;
     }
 
     .logo {
-      width: 300px;
-      height: 300px;
+      width: 320px;
+      height: 320px;
       background-image: url('nix-logo-final.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
       opacity: 0;
-      animation: logoIn 2s ease-out forwards;
+      animation: showLogo 2s ease-out forwards;
     }
 
     .greeting {
-      font-size: 40px;
-      margin-top: 40px;
+      font-size: 44px;
+      margin-top: 30px;
       opacity: 0;
-      animation: greetingIn 2s ease-out forwards;
-      animation-delay: 3s;
+      animation: showGreeting 2s ease-out forwards;
+      animation-delay: 2.5s;
+      position: relative;
+      top: -40px;
     }
 
     .presentation {
+      margin-top: 40px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-top: 40px;
+      align-items: center;
       opacity: 0;
-      animation: presentationIn 2s ease-out forwards;
-      animation-delay: 6s;
+      animation: showPresentation 2s ease-out forwards;
+      animation-delay: 5.5s;
     }
 
     .slide {
       font-size: 20px;
       text-align: center;
+      margin-bottom: 10px;
     }
 
-    @keyframes logoIn {
+    @keyframes showLogo {
       from { opacity: 0; transform: scale(0.8); }
       to { opacity: 1; transform: scale(1); }
     }
 
-    @keyframes greetingIn {
+    @keyframes showGreeting {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes presentationIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    @keyframes showPresentation {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Логотип -->
+  <!-- Важливо: використовуємо div, а не <img>, щоб не було рамки -->
   <div class="logo"></div>
 
-  <!-- Вітання -->
   <div class="greeting">Вітаємо в NyXerion</div>
 
-  <!-- Основний текст -->
   <div class="presentation">
-    <div class="slide"><p>Щосекунди помирає дитина.</p></div>
-    <div class="slide"><p>Кожна хвилина — нова жертва війни.</p></div>
-    <div class="slide"><p>Онкологія росте швидше за науку.</p></div>
-    <div class="slide"><p>Цифровий контроль замінює свободу.</p></div>
-    <div class="slide"><p>NyXerion говорить те, чого бояться сказати.</p></div>
+    <div class="slide">Щосекунди помирає дитина.</div>
+    <div class="slide">Кожна хвилина — нова жертва війни.</div>
+    <div class="slide">Онкологія росте швидше за науку.</div>
+    <div class="slide">Цифровий контроль замінює свободу.</div>
+    <div class="slide">NyXerion говорить те, чого бояться сказати.</div>
   </div>
 
 </body>
