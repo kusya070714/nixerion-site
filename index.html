@@ -4,88 +4,85 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NyXerion</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom right, #000000, #1a0033, #330066);
+      background-color: #000;
       color: #fff;
       font-family: 'Segoe UI', sans-serif;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
       overflow: hidden;
-      flex-direction: column;
     }
 
     .logo {
-      width: 320px;
-      height: auto;
-      animation: logoIn 3s ease-in-out forwards;
-    }
-
-    .greeting, .presentation {
+      width: 300px;
+      height: 300px;
+      background-image: url('nix-logo-final.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
       opacity: 0;
+      animation: logoIn 2s ease-out forwards;
     }
 
     .greeting {
       font-size: 40px;
-      font-weight: bold;
-      animation: greetingIn 2s ease-in-out forwards;
-      animation-delay: 3.5s;
+      margin-top: 40px;
+      opacity: 0;
+      animation: greetingIn 2s ease-out forwards;
+      animation-delay: 3s;
     }
 
     .presentation {
-      margin-top: 20px;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 40px;
+      opacity: 0;
+      animation: presentationIn 2s ease-out forwards;
+      animation-delay: 6s;
     }
 
     .slide {
-      opacity: 0;
-      animation: fadeIn 2s ease-in-out forwards;
+      font-size: 20px;
+      text-align: center;
     }
 
-    #slide1 { animation-delay: 7s; }
-    #slide2 { animation-delay: 8.5s; }
-    #slide3 { animation-delay: 10s; }
-    #slide4 { animation-delay: 11.5s; }
-    #slide5 { animation-delay: 13s; }
-
     @keyframes logoIn {
-      0%   { opacity: 0; transform: scale(0.8); }
-      30%  { opacity: 1; transform: scale(1); }
-      60%  { opacity: 1; }
-      100% { opacity: 0; transform: scale(0.8); }
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     @keyframes greetingIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to   { opacity: 1; transform: scale(1); }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes presentationIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Логотип, без рамки і alt -->
-  <img src="nix-logo-final.png" class="logo" />
+  <!-- Логотип -->
+  <div class="logo"></div>
 
   <!-- Вітання -->
   <div class="greeting">Вітаємо в NyXerion</div>
 
-  <!-- Презентація -->
+  <!-- Основний текст -->
   <div class="presentation">
-    <div class="slide" id="slide1"><p>Щосекунди помирає дитина.</p></div>
-    <div class="slide" id="slide2"><p>Кожна хвилина — нова жертва війни.</p></div>
-    <div class="slide" id="slide3"><p>Онкологія росте швидше за науку.</p></div>
-    <div class="slide" id="slide4"><p>Цифровий контроль замінює свободу.</p></div>
-    <div class="slide" id="slide5"><p>NyXerion говорить те, чого бояться сказати.</p></div>
+    <div class="slide"><p>Щосекунди помирає дитина.</p></div>
+    <div class="slide"><p>Кожна хвилина — нова жертва війни.</p></div>
+    <div class="slide"><p>Онкологія росте швидше за науку.</p></div>
+    <div class="slide"><p>Цифровий контроль замінює свободу.</p></div>
+    <div class="slide"><p>NyXerion говорить те, чого бояться сказати.</p></div>
   </div>
 
 </body>
