@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NyXerion</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      background-color: #000;
+      background: linear-gradient(to bottom right, #000000, #1a0033, #330066);
       color: #fff;
-      font-family: "Segoe UI", sans-serif;
-      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -19,15 +18,11 @@
       flex-direction: column;
     }
 
-    .logo {
+    img.logo {
       width: 150px;
       height: 150px;
-      background-image: url('nix-logo-final.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      opacity: 0;
       animation: fadeIn 2s ease-in-out forwards;
+      opacity: 0;
     }
 
     .greeting {
@@ -38,32 +33,44 @@
       animation-delay: 2s;
     }
 
+    .presentation {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .slide {
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    #slide1 { animation-delay: 3s; }
+    #slide2 { animation-delay: 4s; }
+    #slide3 { animation-delay: 5s; }
+    #slide4 { animation-delay: 6s; }
+    #slide5 { animation-delay: 7s; }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
+      from { opacity: 0; transform: scale(0.9); }
       to { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
 <body>
-  <img src="logo.png" width="150" height="150" alt="NyXerion logo" style="border: 2px solid red;">
-  <div class="logo"></div>
+
+  <!-- ✅ логотип -->
+  <img src="logo.png" alt="NyXerion logo" class="logo">
+
+  <!-- Привітання -->
   <div class="greeting">Вітаємо в NyXerion</div>
+
+  <!-- Презентація -->
   <div class="presentation">
-  <div class="slide" id="slide1">
-    <p>Щосекунди помирає дитина.</p>
+    <div class="slide" id="slide1"><p>Щосекунди помирає дитина.</p></div>
+    <div class="slide" id="slide2"><p>Кожна хвилина — нова жертва війни.</p></div>
+    <div class="slide" id="slide3"><p>Онкологія росте швидше за науку.</p></div>
+    <div class="slide" id="slide4"><p>Цифровий контроль замінює свободу.</p></div>
+    <div class="slide" id="slide5"><p>NyXerion говорить те, чого бояться сказати.</p></div>
   </div>
-  <div class="slide" id="slide2">
-    <p>Кожна хвилина — нова жертва війни.</p>
-  </div>
-  <div class="slide" id="slide3">
-    <p>Онкологія росте швидше за науку.</p>
-  </div>
-  <div class="slide" id="slide4">
-    <p>Цифровий контроль замінює свободу.</p>
-  </div>
-  <div class="slide" id="slide5">
-    <p>NyXerion говорить те, чого бояться сказати.</p>
-  </div>
-</div>
+
 </body>
 </html>
