@@ -1,62 +1,61 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NyXerion</title>
   <style>
     body {
-      background: linear-gradient(to bottom, #000000, #1a0052);
-      color: #fff;
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      height: 100vh;
+      background: linear-gradient(to bottom, #000000, #1a0052);
+      color: #ff2a2a;
+      font-family: 'Segoe UI', sans-serif;
       overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
+      height: 100vh;
     }
 
-    .logo, .greeting, .presentation {
-      opacity: 0;
+    .centered {
       position: absolute;
-      text-align: center;
-      width: 100%;
-      transition: opacity 1s ease;
-    }
-
-    .logo {
-      background-image: url('nix-logo-final.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      width: 500px;
-      height: 500px;
-      top: 10%;
-    }
-
-    .greeting {
-      font-size: 48px;
-      top: 65%;
-    }
-
-    .presentation {
-      font-size: 28px;
       top: 50%;
-      line-height: 2;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      text-align: center;
+      transition: opacity 1s ease;
     }
 
     .visible {
       opacity: 1;
     }
+
+    .logo {
+      width: 600px;
+      height: 600px;
+      background-image: url('nix-logo-final.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .greeting {
+      font-size: 60px;
+    }
+
+    .presentation {
+      font-size: 32px;
+      line-height: 2;
+      max-width: 90%;
+    }
   </style>
 </head>
 <body>
 
-  <div class="logo" id="logo"></div>
-  <div class="greeting" id="greeting">Вітаємо в NyXerion</div>
-  <div class="presentation" id="presentation">
+  <div class="centered logo" id="logo"></div>
+  <div class="centered greeting" id="greeting">Вітаємо в NyXerion</div>
+  <div class="centered presentation" id="presentation">
     <div>Щосекунди помирає дитина.</div>
     <div>Кожна хвилина — нова жертва війни.</div>
     <div>Онкологія росте швидше за науку.</div>
@@ -65,25 +64,23 @@
   </div>
 
   <script>
-    const logo = document.getElementById("logo");
-    const greeting = document.getElementById("greeting");
-    const presentation = document.getElementById("presentation");
+    const logo = document.getElementById('logo');
+    const greeting = document.getElementById('greeting');
+    const presentation = document.getElementById('presentation');
 
-    // Показати логотип
-    setTimeout(() => {
-      logo.classList.add("visible");
-    }, 500);
+    // Показ логотипу
+    setTimeout(() => logo.classList.add('visible'), 500);
 
-    // Сховати логотип, показати привітання
+    // Приховати логотип, показати вітання
     setTimeout(() => {
-      logo.classList.remove("visible");
-      greeting.classList.add("visible");
+      logo.classList.remove('visible');
+      greeting.classList.add('visible');
     }, 4000);
 
-    // Сховати привітання, показати презентацію
+    // Приховати вітання, показати основний текст
     setTimeout(() => {
-      greeting.classList.remove("visible");
-      presentation.classList.add("visible");
+      greeting.classList.remove('visible');
+      presentation.classList.add('visible');
     }, 8000);
   </script>
 
