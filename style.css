@@ -14,7 +14,7 @@ body {
 .logo {
   width: 200px;
   height: 200px;
-  background-image: url('./logo.png');
+  background-image: url('nix-logo-final.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
