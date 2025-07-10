@@ -21,9 +21,9 @@
     }
 
     .logo {
-      width: 300px;
+      width: 320px;
       height: auto;
-      animation: logoIn 2s ease-in-out forwards;
+      animation: logoIn 3s ease-in-out forwards;
     }
 
     .greeting, .presentation {
@@ -31,9 +31,10 @@
     }
 
     .greeting {
-      font-size: 36px;
+      font-size: 40px;
+      font-weight: bold;
       animation: greetingIn 2s ease-in-out forwards;
-      animation-delay: 5s;
+      animation-delay: 3.5s;
     }
 
     .presentation {
@@ -46,22 +47,22 @@
       animation: fadeIn 2s ease-in-out forwards;
     }
 
-    #slide1 { animation-delay: 9s; }
-    #slide2 { animation-delay: 10.5s; }
-    #slide3 { animation-delay: 12s; }
-    #slide4 { animation-delay: 13.5s; }
-    #slide5 { animation-delay: 15s; }
+    #slide1 { animation-delay: 7s; }
+    #slide2 { animation-delay: 8.5s; }
+    #slide3 { animation-delay: 10s; }
+    #slide4 { animation-delay: 11.5s; }
+    #slide5 { animation-delay: 13s; }
 
     @keyframes logoIn {
       0%   { opacity: 0; transform: scale(0.8); }
       30%  { opacity: 1; transform: scale(1); }
-      70%  { opacity: 1; }
+      60%  { opacity: 1; }
       100% { opacity: 0; transform: scale(0.8); }
     }
 
     @keyframes greetingIn {
-      0%   { opacity: 0; transform: scale(0.8); }
-      100% { opacity: 1; transform: scale(1); }
+      from { opacity: 0; transform: scale(0.8); }
+      to   { opacity: 1; transform: scale(1); }
     }
 
     @keyframes fadeIn {
@@ -72,8 +73,8 @@
 </head>
 <body>
 
-  <!-- Логотип -->
-  <img src="logo.png" alt="NyXerion logo" class="logo" />
+  <!-- Логотип, без рамки і alt -->
+  <img src="logo.png" class="logo" />
 
   <!-- Вітання -->
   <div class="greeting">Вітаємо в NyXerion</div>
