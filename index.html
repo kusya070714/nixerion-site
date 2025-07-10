@@ -1,13 +1,51 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nixerion</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NyXerion</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    .logo {
+      width: 150px;
+      height: 150px;
+      background-image: url('logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    .greeting {
+      margin-top: 30px;
+      font-size: 28px;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+      animation-delay: 2s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
 </head>
 <body>
-  <h1>Вітаємо у Nixerion</h1>
-  <p>Цей сайт створено для проєкту Люцифера та майбутнього нашої системи.</p>
+  <div class="logo"></div>
+  <div class="greeting">Вітаємо в NyXerion</div>
 </body>
 </html>
