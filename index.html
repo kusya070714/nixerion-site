@@ -86,12 +86,11 @@
     }
   });
 
-  // Перезавантаження при зміні мови
-  function changeLanguage(lang = null) {
-    const selectedLang = lang || document.getElementById('language').value;
-    localStorage.setItem('lang', selectedLang);
-    location.reload(); // Перезавантажує сторінку
-  }
+function changeLanguage() {
+  const lang = document.getElementById('language').value;
+  localStorage.setItem('lang', lang);  // зберігаємо вибір
+  applyLanguage(lang);                 // застосовуємо одразу без перезавантаження
+}
 </script>
 
   <script>
