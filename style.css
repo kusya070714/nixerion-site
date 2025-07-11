@@ -121,3 +121,28 @@ h1, h2, h3, p {
   transform: translateY(0);
 }
 
+.language-selector {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  font-size: 14px;
+}
+
+.language-selector select {
+  background-color: #111;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.language-selector label {
+  margin-right: 8px;
+}
