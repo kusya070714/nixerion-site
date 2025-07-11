@@ -3,13 +3,13 @@ body {
   font-family: 'Comfortaa', 'Quicksand', 'Poppins', sans-serif;
   color: red;
   text-align: center;
+  background-image: url('fon.png');
   background-color: #000;
-  background-image: url("fon.png"); /* заміни на свій */
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
 }
-
 /* СТИЛЬ ДЛЯ СЛАЙДІВ з ефектом друку */
 .slide {
   font-size: 1.7rem;
@@ -23,20 +23,42 @@ body {
   width: 0;
   animation: none;
 }
-
-/* Коли стає видимим */
-.slide.visible {
-  opacity: 1;
-  animation: typing 3s steps(40, end) forwards, blink 0.8s step-end infinite;
+.stage {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
 }
 
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+.logo-fullscreen {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('nix-logo-final.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  animation: logo-fadein 2s ease-out forwards, logo-fadeout 2s ease-out 2s forwards;
 }
 
-@keyframes blink {
-  50% { border-color: transparent; }
+
+@keyframes logo-fadein {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes logo-fadeout {
+  to {
+    opacity: 0;
+    transform: scale(1.2);
+  }
 }
 
 /* Привітання */
@@ -50,14 +72,6 @@ body {
 .greeting.zoom-in {
   opacity: 1;
   transform: scale(1.7);
-}
-
-.greeting.fadein {
-  animation: greeting-fadein 2s ease-out forwards;
-}
-
-.greeting.fadeout {
-  animation: greeting-fadeout 2s ease-out forwards;
 }
 
 @keyframes greeting-fadein {
@@ -80,5 +94,27 @@ body {
     opacity: 0;
     transform: scale(1.8);
   }
+}
+
+.greeting.fadein {
+  animation: greeting-fadein 2s ease-out forwards;
+}
+
+.greeting.fadeout {
+  animation: greeting-fadeout 2s ease-out forwards;
+}
+
+/* Слайди */
+.slide {
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+  margin: 10px 0;
+}
+
+.slide.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
