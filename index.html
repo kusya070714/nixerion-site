@@ -1,16 +1,24 @@
- <body>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NyXerion</title>
+  <link rel="stylesheet" href="style.css"> <!-- ВАЖЛИВО -->
+</head>
+<body>
 
-  <!-- Етап 1: Лого на весь екран -->
+  <!-- Етап 1 -->
   <div class="stage" id="stage1">
     <div class="logo-fullscreen"></div>
   </div>
 
-  <!-- Етап 2: Привітання -->
+  <!-- Етап 2 -->
   <div class="stage" id="stage2">
     <div class="greeting">Вітаємо в NyXerion</div>
   </div>
 
-  <!-- Етап 3: Проблеми -->
+  <!-- Етап 3 -->
   <div class="stage" id="stage3">
     <div class="slide">Щосекунди помирає дитина.</div>
     <div class="slide">Кожна хвилина — нова жертва війни.</div>
@@ -19,18 +27,20 @@
     <div class="slide">NyXerion говорить те, чого бояться сказати.</div>
   </div>
 
-<script>
-  // Показуємо етапи по черзі
-  setTimeout(() => document.getElementById('stage1').style.display = 'none', 4000);
-  setTimeout(() => document.getElementById('stage2').style.display = 'flex', 4000);
-  setTimeout(() => document.getElementById('stage2').classList.add('zoom-in'), 4500);
-  setTimeout(() => document.getElementById('stage2').style.display = 'none', 8000);
-  setTimeout(() => document.getElementById('stage3').style.display = 'flex', 8000);
-  
-  setTimeout(() => document.querySelectorAll('.slide')[0].classList.add('visible'), 8500);
-  setTimeout(() => document.querySelectorAll('.slide')[1].classList.add('visible'), 11500);
-  setTimeout(() => document.querySelectorAll('.slide')[2].classList.add('visible'), 14500);
-  setTimeout(() => document.querySelectorAll('.slide')[3].classList.add('visible'), 17500);
-  setTimeout(() => document.querySelectorAll('.slide')[4].classList.add('visible'), 20500);
-</script>
+  <!-- JavaScript -->
+  <script>
+    setTimeout(() => document.getElementById('stage1').style.display = 'none', 4000);
+    setTimeout(() => document.getElementById('stage2').style.display = 'flex', 4000);
+    setTimeout(() => document.getElementById('stage2').classList.add('zoom-in'), 4500);
+    setTimeout(() => document.getElementById('stage2').style.display = 'none', 8000);
+    setTimeout(() => document.getElementById('stage3').style.display = 'flex', 8000);
+    setTimeout(() => document.querySelectorAll('.slide')[0].classList.add('visible'), 8500);
+    setTimeout(() => document.querySelectorAll('.slide')[1].classList.add('visible'), 11500);
+    setTimeout(() => document.querySelectorAll('.slide')[2].classList.add('visible'), 14500);
+    setTimeout(() => document.querySelectorAll('.slide')[3].classList.add('visible'), 17500);
+    setTimeout(() => document.querySelectorAll('.slide')[4].classList.add('visible'), 20500);
+  </script>
+
 </body>
+</html>
+
