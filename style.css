@@ -57,6 +57,38 @@ body {
   opacity: 1;
   transform: scale(1.7);
 }
+@keyframes greeting-fadein {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes greeting-fadeout {
+  to {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
+
+.greeting {
+  font-size: 2.5rem;
+  opacity: 0; /* на всяк випадок */
+  transform: scale(0.8); /* початковий стан */
+}
+
+/* Це додається динамічно в JS */
+.greeting.fadein {
+  animation: greeting-fadein 2s ease-out forwards;
+}
+
+.greeting.fadeout {
+  animation: greeting-fadeout 2s ease-out forwards;
+}
 
 
 /* Слайди */
