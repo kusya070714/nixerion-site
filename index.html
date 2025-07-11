@@ -46,21 +46,7 @@
     }, 3500);
   }, 4000);
 
-  // Через 8с — слайди
-  setTimeout(() => {
-    document.getElementById('stage2').style.display = 'none';
-    document.getElementById('stage3').style.display = 'flex';
-    document.getElementById('voice').play();
-    const slides = document.querySelectorAll('.slide');
-    slides.forEach((el, i) => {
-      setTimeout(() => {
-        el.classList.add('visible');
-      }, i * 3000);
-    });
-  }, 10000);
-</script>
-<script>
-  // Після привітання запускаємо слайди
+  // Через 9с — запускаємо слайди + звук
   setTimeout(() => {
     document.getElementById('stage2').style.display = 'none';
     document.getElementById('stage3').style.display = 'flex';
@@ -69,9 +55,7 @@
     voice.play();
 
     const slides = document.querySelectorAll('.slide');
-
-    // Чітко прописуємо, через скільки має з’являтись кожен слайд
-    const timings = [1000, 6000, 17000, 22500, 27500]; // мс — час, коли з’являється кожен слайд
+    const timings = [1000, 6000, 17000, 22500, 27500]; // Затримка для кожного слайда
 
     slides.forEach((el, i) => {
       setTimeout(() => {
@@ -79,8 +63,9 @@
       }, timings[i]);
     });
 
-  }, 9000); // запуск після привітання
+  }, 9000); // Після привітання
 </script>
+
 
 </body>
 </html>
