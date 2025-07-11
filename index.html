@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NyXerion</title>
-  <link rel="stylesheet" href="style.css"> <!-- ВАЖЛИВО -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Етап 1 -->
+  <!-- ЛОГО -->
   <div class="stage" id="stage1">
     <div class="logo-fullscreen"></div>
   </div>
 
-  <!-- Етап 2 -->
+  <!-- ПРИВІТАННЯ -->
   <div class="stage" id="stage2">
     <div class="greeting">Вітаємо в NyXerion</div>
   </div>
 
-  <!-- Етап 3 -->
+  <!-- СЛАЙДИ -->
   <div class="stage" id="stage3">
     <div class="slide">Щосекунди помирає дитина.</div>
     <div class="slide">Кожна хвилина — нова жертва війни.</div>
@@ -27,38 +27,32 @@
     <div class="slide">NyXerion говорить те, чого бояться сказати.</div>
   </div>
 
-<script>
-  window.onload = function () {
-    // Спочатку видно stage1 (лого)
+  <script>
+    // Показуємо логотип
     document.getElementById('stage1').style.display = 'flex';
 
-    // Через 4с — ховаємо лого, з’являється привітання
+    // Через 4с — показуємо привітання
     setTimeout(() => {
       document.getElementById('stage1').style.display = 'none';
       document.getElementById('stage2').style.display = 'flex';
-
-      // Анімація наближення
-      document.getElementById('stage2').classList.add('zoom-in');
+      document.querySelector('.greeting').classList.add('zoom-in');
     }, 4000);
 
-    // Через 8с — привітання зникає, з’являються слайди
+    // Через 8с — слайди
     setTimeout(() => {
       document.getElementById('stage2').style.display = 'none';
       document.getElementById('stage3').style.display = 'flex';
 
-      // Поетапне показування слайдів
       const slides = document.querySelectorAll('.slide');
       slides.forEach((el, i) => {
         setTimeout(() => {
           el.classList.add('visible');
         }, i * 3000);
       });
-
     }, 8000);
-  };
-</script>
-
+  </script>
 
 </body>
 </html>
+
 
