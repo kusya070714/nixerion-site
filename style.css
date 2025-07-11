@@ -21,7 +21,7 @@ body {
   height: 100vh;
 }
 
-/* 1. Лого fullscreen */
+/* Лого */
 .logo-fullscreen {
   width: 300px;
   height: 300px;
@@ -31,7 +31,7 @@ body {
   background-position: center;
 }
 
-/* 2. Привітання */
+/* Привітання */
 .greeting {
   font-size: 48px;
   font-weight: bold;
@@ -44,7 +44,7 @@ body {
   transform: scale(1.2);
 }
 
-/* 3. Слайди */
+/* Текст проблем */
 .slide {
   font-size: 26px;
   margin: 10px 0;
