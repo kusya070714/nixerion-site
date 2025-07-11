@@ -6,62 +6,68 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  color: #ff2a2a;
   font-family: 'Segoe UI', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  color: #ff2a2a;
 }
 
-.logo {
-  width: 300px;
-  height: 300px;
+/* 1. Лого fullscreen */
+.logo-fullscreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-image: url('nix-logo-final.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0;
-  transition: opacity 2s ease;
-}
-
-.logo.visible {
+  z-index: 10;
   opacity: 1;
+  transition: opacity 1.5s ease;
+}
+.logo-fullscreen.fade-out {
+  opacity: 0;
 }
 
+/* 2. Привітання — ефект наближення */
 .greeting {
   font-size: 48px;
   font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 50px;
   text-align: center;
   color: #ff2a2a;
   opacity: 0;
-  transition: opacity 2s ease;
+  transform: scale(0.8);
+  transition: transform 1.5s ease, opacity 1.5s ease;
+  z-index: 5;
 }
-
-.greeting.visible {
+.greeting.zoom-in {
   opacity: 1;
+  transform: scale(1.2);
 }
 
+/* 3. Слайди проблем — як титри */
 .presentation {
-  max-width: 800px;
+  display: none;
+  max-width: 90%;
   text-align: center;
+  margin-top: 40px;
 }
-
 .slide {
-  font-size: 28px;
+  font-size: 26px;
   line-height: 2;
   margin: 10px 0;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1.5s ease, transform 1.5s ease;
-  color: #ff2a2a;
 }
-
 .slide.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
 
