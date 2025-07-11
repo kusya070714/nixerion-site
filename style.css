@@ -8,14 +8,13 @@ body {
   background-size: cover;
   color: #ff2a2a;
   font-family: 'Segoe UI', sans-serif;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-/* Логотип */
 .logo {
   width: 300px;
   height: 300px;
@@ -23,11 +22,14 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 20px auto;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.logo.visible {
   opacity: 1;
 }
 
-/* Вітання */
 .greeting {
   font-size: 48px;
   font-weight: bold;
@@ -36,42 +38,30 @@ body {
   text-align: center;
   color: #ff2a2a;
   opacity: 0;
-  animation: fadein 2s forwards 2s;
+  transition: opacity 2s ease;
 }
 
-/* Слайди */
+.greeting.visible {
+  opacity: 1;
+}
+
 .presentation {
-  font-size: 26px;
-  line-height: 2;
+  max-width: 800px;
   text-align: center;
-  color: #ff2a2a;
-  max-width: 90%;
 }
 
 .slide {
+  font-size: 28px;
+  line-height: 2;
+  margin: 10px 0;
   opacity: 0;
-  animation: reveal 2s ease-out forwards;
+  transform: translateY(20px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+  color: #ff2a2a;
 }
 
-#slide2 { animation-delay: 3s; }
-#slide3 { animation-delay: 6s; }
-#slide4 { animation-delay: 9s; }
-#slide5 { animation-delay: 12s; }
-
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadein {
-  to {
-    opacity: 1;
-  }
+.slide.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
