@@ -27,19 +27,36 @@
     <div class="slide">NyXerion говорить те, чого бояться сказати.</div>
   </div>
 
-  <!-- JavaScript -->
-  <script>
-    setTimeout(() => document.getElementById('stage1').style.display = 'none', 4000);
-    setTimeout(() => document.getElementById('stage2').style.display = 'flex', 4000);
-    setTimeout(() => document.getElementById('stage2').classList.add('zoom-in'), 4500);
-    setTimeout(() => document.getElementById('stage2').style.display = 'none', 8000);
-    setTimeout(() => document.getElementById('stage3').style.display = 'flex', 8000);
-    setTimeout(() => document.querySelectorAll('.slide')[0].classList.add('visible'), 8500);
-    setTimeout(() => document.querySelectorAll('.slide')[1].classList.add('visible'), 11500);
-    setTimeout(() => document.querySelectorAll('.slide')[2].classList.add('visible'), 14500);
-    setTimeout(() => document.querySelectorAll('.slide')[3].classList.add('visible'), 17500);
-    setTimeout(() => document.querySelectorAll('.slide')[4].classList.add('visible'), 20500);
-  </script>
+<script>
+  // Спочатку видно stage1 (лого)
+  document.getElementById('stage1').style.display = 'flex';
+
+  // Через 4с — ховаємо лого
+  setTimeout(() => {
+    document.getElementById('stage1').style.display = 'none';
+    document.getElementById('stage2').style.display = 'flex';
+  }, 4000);
+
+  // Анімація наближення greeting
+  setTimeout(() => {
+    document.getElementById('stage2').classList.add('zoom-in');
+  }, 4200);
+
+  // Через 8с — привітання зникає, з’являються слайди
+  setTimeout(() => {
+    document.getElementById('stage2').style.display = 'none';
+    document.getElementById('stage3').style.display = 'flex';
+  }, 8000);
+
+  // Поетапне показування слайдів
+  const slides = document.querySelectorAll('.slide');
+  slides.forEach((el, i) => {
+    setTimeout(() => {
+      el.classList.add('visible');
+    }, 8500 + i * 3000); // кожен наступний через 3с
+  });
+</script>
+
 
 </body>
 </html>
