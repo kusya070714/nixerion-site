@@ -12,7 +12,22 @@ body {
   background-attachment: fixed;
 }
 
+h1, h2, h3, p {
+  animation: pulse-glow 4s ease-in-out infinite;
+  text-shadow: 0 0 4px red, 0 0 8px #ff4444, 0 0 12px #ff4444;
+}
 
+@keyframes pulse-glow {
+  0% {
+    text-shadow: 0 0 4px red, 0 0 8px #ff4444, 0 0 12px #ff4444;
+  }
+  50% {
+    text-shadow: 0 0 8px red, 0 0 16px #ff4444, 0 0 24px #ff4444;
+  }
+  100% {
+    text-shadow: 0 0 4px red, 0 0 8px #ff4444, 0 0 12px #ff4444;
+  }
+}
 .stage {
   display: none;
   justify-content: center;
