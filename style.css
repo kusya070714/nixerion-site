@@ -10,19 +10,7 @@ body {
   background-position: center;
   background-attachment: fixed;
 }
-/* СТИЛЬ ДЛЯ СЛАЙДІВ з ефектом друку */
-.slide {
-  font-size: 1.7rem;
-  color: #ff3c3c;
-  opacity: 0;
-  transform: translateY(20px);
-  margin: 10px 0;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #ff3c3c;
-  width: 0;
-  animation: none;
-}
+
 .stage {
   display: none;
   justify-content: center;
