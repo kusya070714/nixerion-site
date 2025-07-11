@@ -3,12 +3,15 @@ body {
   font-family: sans-serif;
   color: red;
   text-align: center;
-  background-color: #000;
+
   background-image: url('green-dust.png');
+  background-color: #000;
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
+
 
 .stage {
   display: none;
