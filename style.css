@@ -21,18 +21,19 @@ body {
   height: 100vh;
 }
 
-/* Логотип */
-.logo {
-  width: 200px;
-  height: 200px;
+.logo-fullscreen {
+  width: 60vw;
+  height: 60vw;
+  max-width: 400px;
+  max-height: 400px;
   background-image: url('nix-logo-final.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin-bottom: 20px;
   opacity: 1;
-   border: 2px solid red;
+  animation: logo-fadeout 2s ease-out 2s forwards;
 }
+
 
 @keyframes logo-fadeout {
   to {
