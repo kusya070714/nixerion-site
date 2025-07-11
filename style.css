@@ -16,8 +16,8 @@ body {
 }
 
 .logo-fullscreen {
-  width: 300px;
-  height: 300px;
+  width: 900px;
+  height: 900px;
   background-image: url('nix-logo-final.png');
   background-size: contain;
   background-repeat: no-repeat;
