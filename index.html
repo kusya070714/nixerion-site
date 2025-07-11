@@ -1,85 +1,15 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NyXerion</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #050505 0%, #1a1a2e 40%, #3c1053 80%, #000000 100%);
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      background-size: cover;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
-    }
-
-    .centered {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
-
-    .logo {
-      width: 900px;
-      height: 900px;
-      background-image: url('387273a6-d099-447e-8624-3a4d2b0ddd7f.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      margin: 0 auto;
-      opacity: 0;
-      transition: opacity 2s ease-in-out;
-    }
-
-    .greeting {
-      font-size: 48px;
-      font-weight: bold;
-      color: red;
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-    }
-
-    .presentation {
-      width: 90%;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-      font-size: 22px;
-      line-height: 1.8;
-      color: red;
-    }
-
-    .slide {
-      opacity: 0;
-      animation: reveal 2s ease-out forwards;
-    }
-
-    @keyframes reveal {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
 </head>
 <body>
 
-  <div class="centered">
-    <div class="logo" id="logo"></div>
-    <div class="greeting" id="greeting">Вітаємо в NyXerion</div>
-  </div>
+  <div class="logo" id="logo"></div>
+  <div class="greeting" id="greeting">Вітаємо в NyXerion</div>
 
   <div class="presentation">
     <div class="slide" id="slide1">Щосекунди помирає дитина.</div>
@@ -89,34 +19,6 @@
     <div class="slide" id="slide5">NyXerion говорить те, чого бояться сказати.</div>
   </div>
 
-  <script>
-    const logo = document.getElementById('logo');
-    const greeting = document.getElementById('greeting');
-    const slides = [
-      document.getElementById('slide1'),
-      document.getElementById('slide2'),
-      document.getElementById('slide3'),
-      document.getElementById('slide4'),
-      document.getElementById('slide5'),
-    ];
-
-    // Анімація логотипу
-    setTimeout(() => logo.style.opacity = 1, 500);
-    setTimeout(() => logo.style.opacity = 0, 4500);
-
-    // Анімація вітання
-    setTimeout(() => greeting.style.opacity = 1, 5000);
-    setTimeout(() => greeting.style.opacity = 0, 8000);
-
-    // Слайди
-    slides.forEach((slide, index) => {
-      setTimeout(() => {
-        slide.classList.add('slide');
-        slide.style.animationDelay = `${index * 3 + 9}s`;
-        slide.style.animation = `reveal 2s ease-out forwards`;
-      }, (index * 3000) + 9000);
-    });
-  </script>
-
 </body>
 </html>
+
