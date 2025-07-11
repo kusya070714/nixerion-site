@@ -30,7 +30,7 @@
   <audio id="voice" src="problems_voice.mp3"></audio>
   <div class="language-selector">
   <label for="language">🌐 Мова: </label>
-  <select id="language">
+  <select id="language" onchange="changeLanguage()">
     <option value="uk" selected>Українська</option>
     <option value="en">English</option>
     <option value="de">Deutsch</option>
@@ -84,7 +84,7 @@
 
     // Переклад тексту
     const translations = {
-      ua: [
+      uk: [
         "Щосекунди помирає дитина. Ми не встигаємо рятувати...",
         "Кожна хвилина — нові жертви війн. Ціна мовчання — життя...",
         "Онкологія росте швидше за науку. Ми програємо в цій гонитві...",
@@ -122,7 +122,7 @@
     }
 
     // Оновлюємо аудіо
-    if (lang === 'ua') {
+    if (lang === 'uk') {
       voice.src = 'audio/problems_voice.mp3';
     } else if (lang === 'en') {
       voice.src = 'audio/problems_voice_en.mp3';
