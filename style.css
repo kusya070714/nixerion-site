@@ -1,11 +1,16 @@
-
 body {
   margin: 0;
-  background: linear-gradient(to bottom, #000000, #003300);
+  background-color: #000000;
+  background-image:
+    radial-gradient(ellipse at 50% 50%, rgba(0, 80, 0, 0.1), transparent 80%),
+    radial-gradient(ellipse at 30% 70%, rgba(0, 100, 0, 0.08), transparent 70%),
+    radial-gradient(ellipse at 70% 30%, rgba(0, 150, 0, 0.05), transparent 70%);
+  background-blend-mode: screen;
   font-family: sans-serif;
   color: red;
   text-align: center;
 }
+
 
 .stage {
   display: none;
