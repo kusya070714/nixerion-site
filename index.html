@@ -28,33 +28,34 @@
   </div>
 
 <script>
-  // Спочатку видно stage1 (лого)
-  document.getElementById('stage1').style.display = 'flex';
+  window.onload = function () {
+    // Спочатку видно stage1 (лого)
+    document.getElementById('stage1').style.display = 'flex';
 
-  // Через 4с — ховаємо лого
-  setTimeout(() => {
-    document.getElementById('stage1').style.display = 'none';
-    document.getElementById('stage2').style.display = 'flex';
-  }, 4000);
-
-  // Анімація наближення greeting
-  setTimeout(() => {
-    document.getElementById('stage2').classList.add('zoom-in');
-  }, 4200);
-
-  // Через 8с — привітання зникає, з’являються слайди
-  setTimeout(() => {
-    document.getElementById('stage2').style.display = 'none';
-    document.getElementById('stage3').style.display = 'flex';
-  }, 8000);
-
-  // Поетапне показування слайдів
-  const slides = document.querySelectorAll('.slide');
-  slides.forEach((el, i) => {
+    // Через 4с — ховаємо лого, з’являється привітання
     setTimeout(() => {
-      el.classList.add('visible');
-    }, 8500 + i * 3000); // кожен наступний через 3с
-  });
+      document.getElementById('stage1').style.display = 'none';
+      document.getElementById('stage2').style.display = 'flex';
+
+      // Анімація наближення
+      document.getElementById('stage2').classList.add('zoom-in');
+    }, 4000);
+
+    // Через 8с — привітання зникає, з’являються слайди
+    setTimeout(() => {
+      document.getElementById('stage2').style.display = 'none';
+      document.getElementById('stage3').style.display = 'flex';
+
+      // Поетапне показування слайдів
+      const slides = document.querySelectorAll('.slide');
+      slides.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, i * 3000);
+      });
+
+    }, 8000);
+  };
 </script>
 
 
