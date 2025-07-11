@@ -60,25 +60,26 @@
   }, 10000);
 </script>
 <script>
-  // Через 10с — показуємо слайди і запускаємо аудіо
+  // Після привітання запускаємо слайди
   setTimeout(() => {
     document.getElementById('stage2').style.display = 'none';
     document.getElementById('stage3').style.display = 'flex';
 
+    const voice = document.getElementById('voice');
+    voice.play();
+
     const slides = document.querySelectorAll('.slide');
+
+    // Чітко прописуємо, через скільки має з’являтись кожен слайд
+    const timings = [1000, 6000, 11500, 17000, 22500]; // мс — час, коли з’являється кожен слайд
+
     slides.forEach((el, i) => {
       setTimeout(() => {
         el.classList.add('visible');
-      }, 1000 + i * 6000);
+      }, timings[i]);
     });
 
-    // Відтворюємо аудіо (після 10с)
-    const voice = document.getElementById('voice');
-    voice.play().catch((e) => {
-      console.warn("Автовідтворення заблоковано. Додай кнопку для запуску вручну.");
-    });
-
-  }, 9000);
+  }, 9000); // запуск після привітання
 </script>
 
 </body>
