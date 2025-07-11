@@ -28,7 +28,17 @@
     <div class="slide">NyXerion — голос, який більше не вдасться заглушити.</div>
   </div>
   <audio id="voice" src="problems_voice.mp3"></audio>
-  
+  <div class="language-selector">
+  <label for="language">🌐 Мова: </label>
+  <select id="language" onchange="changeLanguage()">
+    <option value="ua">Українська</option>
+    <option value="en">English</option>
+    <option value="de">Deutsch</option>
+    <option value="fr">Français</option>
+    <!-- додай інші мови за потребою -->
+  </select>
+</div>
+ 
   <script>
   // Показуємо логотип
   document.getElementById('stage1').style.display = 'flex';
@@ -66,6 +76,22 @@
   }, 10000); // Після привітання
 </script>
 
+  <script>
+  function changeLanguage() {
+    const lang = document.getElementById('language').value;
+    const voice = document.getElementById('voice');
+
+    if (lang === 'ua') {
+      voice.src = 'audio/problems_voice.mp3';
+    } else if (lang === 'en') {
+      voice.src = 'audio/problems_voice_en.mp3';
+    } else if (lang === 'de') {
+      voice.src = 'audio/problems_voice_de.mp3';
+    } else if (lang === 'fr') {
+      voice.src = 'audio/problems_voice_fr.mp3';
+    }
+  }
+</script>
 
 </body>
 </html>
