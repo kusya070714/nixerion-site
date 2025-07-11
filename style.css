@@ -21,10 +21,9 @@ body {
   height: 100vh;
 }
 
-/* ЛОГО — одразу видно, потім зникає */
 .logo-fullscreen {
-  width: 900px;
-  height: 900px;
+  width: 60vw;
+  height: auto;
   background-image: url('nix-logo-final.png');
   background-size: contain;
   background-repeat: no-repeat;
