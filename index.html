@@ -27,7 +27,8 @@
     <div class="slide">Цифровий контроль замінює свободу.</div>
     <div class="slide">NyXerion говорить те, чого бояться сказати.</div>
   </div>
-
+  <audio id="voice" src="audio/problems_voice.mp3"></audio>
+  
   <script>
   // Показуємо логотип
   document.getElementById('stage1').style.display = 'flex';
@@ -49,7 +50,7 @@
   setTimeout(() => {
     document.getElementById('stage2').style.display = 'none';
     document.getElementById('stage3').style.display = 'flex';
-
+    document.getElementById('voice').play();
     const slides = document.querySelectorAll('.slide');
     slides.forEach((el, i) => {
       setTimeout(() => {
