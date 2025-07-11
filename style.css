@@ -14,7 +14,7 @@ body {
 
 /* Сценічний блок */
 .stage {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
