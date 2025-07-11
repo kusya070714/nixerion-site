@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
@@ -8,10 +8,14 @@
 </head>
 <body>
 
-  <div class="logo" id="logo"></div>
+  <!-- Лого на весь екран -->
+  <div class="logo-fullscreen" id="logoFull"></div>
+
+  <!-- Привітання після лого -->
   <div class="greeting" id="greeting">Вітаємо в NyXerion</div>
 
-  <div class="presentation">
+  <!-- Проблеми -->
+  <div class="presentation" id="presentation">
     <div class="slide" id="slide1">Щосекунди помирає дитина.</div>
     <div class="slide" id="slide2">Кожна хвилина — нова жертва війни.</div>
     <div class="slide" id="slide3">Онкологія росте швидше за науку.</div>
@@ -20,14 +24,21 @@
   </div>
 
   <script>
-    // Затримки появи
-    setTimeout(() => document.getElementById('logo').classList.add('visible'), 500);
-    setTimeout(() => document.getElementById('greeting').classList.add('visible'), 4000);
-    setTimeout(() => document.getElementById('slide1').classList.add('visible'), 6000);
-    setTimeout(() => document.getElementById('slide2').classList.add('visible'), 9000);
-    setTimeout(() => document.getElementById('slide3').classList.add('visible'), 12000);
-    setTimeout(() => document.getElementById('slide4').classList.add('visible'), 15000);
-    setTimeout(() => document.getElementById('slide5').classList.add('visible'), 18000);
+    setTimeout(() => {
+      document.getElementById('logoFull').classList.add('fade-out');
+    }, 4000);
+
+    setTimeout(() => {
+      document.getElementById('logoFull').style.display = 'none';
+      document.getElementById('greeting').classList.add('zoom-in');
+    }, 5000);
+
+    setTimeout(() => document.getElementById('presentation').style.display = 'block', 8000);
+    setTimeout(() => document.getElementById('slide1').classList.add('visible'), 8500);
+    setTimeout(() => document.getElementById('slide2').classList.add('visible'), 11500);
+    setTimeout(() => document.getElementById('slide3').classList.add('visible'), 14500);
+    setTimeout(() => document.getElementById('slide4').classList.add('visible'), 17500);
+    setTimeout(() => document.getElementById('slide5').classList.add('visible'), 20500);
   </script>
 
 </body>
