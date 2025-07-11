@@ -30,8 +30,8 @@
   <audio id="voice" src="problems_voice.mp3"></audio>
   <div class="language-selector">
   <label for="language">🌐 Мова: </label>
-  <select id="language" onchange="changeLanguage()">
-    <option value="ua">Українська</option>
+  <select id="language">
+    <option value="uk" selected>Українська</option>
     <option value="en">English</option>
     <option value="de">Deutsch</option>
     <option value="fr">Français</option>
@@ -76,21 +76,59 @@
   }, 10000); // Після привітання
 </script>
 
-  <script>
-  function changeLanguage() {
-    const lang = document.getElementById('language').value;
-    const voice = document.getElementById('voice');
+<script>
+const translations = {
+  uk: [
+    "Щосекунди помирає дитина. Ми не встигаємо рятувати.",
+    "Кожна хвилина — нові жертви війн. Ціна мовчання — життя.",
+    "Онкологія росте швидше за науку. Ми втрачаємо шанс.",
+    "Цифровий контроль замінює свободу. А ти ще віриш у вибір?",
+    "NyXerion — голос, який більше не вдасться заглушити."
+  ],
+  en: [
+    "Every second, a child dies. We can’t save in time.",
+    "Every minute — new victims of war. The cost of silence is life.",
+    "Cancer grows faster than science. We’re losing the race.",
+    "Digital control replaces freedom. Do you still believe in choice?",
+    "NyXerion — a voice that can no longer be silenced."
+  ],
+  de: [
+    "Jede Sekunde stirbt ein Kind. Wir kommen nicht rechtzeitig.",
+    "Jede Minute — neue Opfer des Krieges. Schweigen kostet Leben.",
+    "Krebs wächst schneller als die Wissenschaft. Wir verlieren.",
+    "Digitale Kontrolle ersetzt Freiheit. Glaubst du noch an Wahl?",
+    "NyXerion — eine Stimme, die man nicht mehr zum Schweigen bringt."
+  ],
+  fr: [
+    "Chaque seconde, un enfant meurt. Nous n’avons pas le temps.",
+    "Chaque minute — de nouvelles victimes de la guerre. Le silence tue.",
+    "Le cancer progresse plus vite que la science. Nous perdons du terrain.",
+    "Le contrôle numérique remplace la liberté. Tu crois encore au choix?",
+    "NyXerion — une voix qu’on ne peut plus faire taire."
+  ]
+};
 
-    if (lang === 'ua') {
-      voice.src = 'audio/problems_voice.mp3';
-    } else if (lang === 'en') {
-      voice.src = 'audio/problems_voice_en.mp3';
-    } else if (lang === 'de') {
-      voice.src = 'audio/problems_voice_de.mp3';
-    } else if (lang === 'fr') {
-      voice.src = 'audio/problems_voice_fr.mp3';
-    }
+function changeLanguage() {
+  const lang = document.getElementById('language').value;
+  const voice = document.getElementById('voice');
+
+  // Зміна джерела аудіо
+  if (lang === 'uk') {
+    voice.src = 'audio/problems_voice.mp3';
+  } else if (lang === 'en') {
+    voice.src = 'audio/problems_voice_en.mp3';
+  } else if (lang === 'de') {
+    voice.src = 'audio/problems_voice_de.mp3';
+  } else if (lang === 'fr') {
+    voice.src = 'audio/problems_voice_fr.mp3';
   }
+
+  // Зміна тексту слайдів
+  const slides = document.querySelectorAll('.slide');
+  translations[lang].forEach((text, i) => {
+    if (slides[i]) slides[i].textContent = text;
+  });
+}
 </script>
 
 </body>
