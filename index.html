@@ -76,13 +76,29 @@
   }, 10000); // Після привітання
 </script>
 
-<script>
-  function changeLanguage() {
-    const lang = document.getElementById('language').value;
+  <script>
+  // Застосовуємо мову з localStorage при завантаженні
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang) {
+      document.getElementById('language').value = savedLang;
+      changeLanguage(savedLang); // Передаємо мову напряму
+    }
+  });
+
+  // Перезавантаження при зміні мови
+  function changeLanguage(lang = null) {
+    const selectedLang = lang || document.getElementById('language').value;
+    localStorage.setItem('lang', selectedLang);
+    location.reload(); // Перезавантажує сторінку
+  }
+</script>
+
+  <script>
+  function applyLanguage(lang) {
     const voice = document.getElementById('voice');
     const slides = document.querySelectorAll('.slide');
 
-    // Переклад тексту
     const translations = {
       uk: [
         "Щосекунди помирає дитина. Ми не встигаємо рятувати...",
@@ -114,25 +130,27 @@
       ]
     };
 
-    // Оновлюємо текст слайдів
     if (translations[lang]) {
       slides.forEach((el, i) => {
         el.textContent = translations[lang][i] || '';
       });
     }
 
-    // Оновлюємо аудіо
-    if (lang === 'uk') {
-      voice.src = 'problems_voice.mp3';
-    } else if (lang === 'en') {
-      voice.src = 'problems_voice_en.mp3';
-    } else if (lang === 'de') {
-      voice.src = 'problems_voice_de.mp3';
-    } else if (lang === 'fr') {
-      voice.src = 'problems_voice_fr.mp3';
-    }
+    // Аудіо
+    const voiceMap = {
+      uk: 'problems_voice.mp3',
+      en: 'problems_voice_en.mp3',
+      de: 'problems_voice_de.mp3',
+      fr: 'problems_voice_fr.mp3'
+    };
+    voice.src = voiceMap[lang] || 'problems_voice.mp3';
   }
+
+  // Викликаємо функцію для встановленої мови
+  const savedLang = localStorage.getItem('lang') || 'uk';
+  applyLanguage(savedLang);
 </script>
+
 
 </body>
 </html>
