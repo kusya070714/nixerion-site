@@ -79,7 +79,19 @@
     });
 
   }, 10000); // Після привітання
-</script>
+
+    // Після останнього слайду — показуємо фразу перед блоком "Світ у розпаді"
+setTimeout(() => {
+  document.getElementById('stage3').style.display = 'none';
+  document.getElementById('stage4').style.display = 'flex';
+
+  // Переходимо до наступного блоку (наприклад stage5) через 4.5с
+  setTimeout(() => {
+    document.getElementById('stage4').style.display = 'none';
+    document.getElementById('stage5').style.display = 'flex'; // або block
+  }, 4500);
+}, 26000); // 22.5s + 3.5с затримки після останнього слайда
+  </script>
 
   <script>
   // Застосовуємо мову з localStorage при завантаженні
