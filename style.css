@@ -146,21 +146,23 @@ h1, h2, h3, p {
 .language-selector label {
   margin-right: 8px;
 }
-
-.slide,
-#stage4 {
-  opacity: 1;
-  transition: opacity 2s cubic-bezier(.4,0,.2,1);
+.slide {
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(.4,0,.2,1);
 }
 
-.slide.fadeout,
-#stage4.fadeout {
+.slide.visible {
+  opacity: 1;
+}
+
+.slide.fadeout {
   opacity: 0 !important;
-  /* не чіпаємо display тут! */
+  transition: opacity 2s cubic-bezier(.4,0,.2,1);
 }
 
 #stage4 {
   display: none;
+  opacity: 1;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -174,6 +176,11 @@ h1, h2, h3, p {
 
 #stage4.show {
   display: flex;
+}
+
+#stage4.fadeout {
+  opacity: 0 !important;
+  transition: opacity 2s cubic-bezier(.4,0,.2,1);
 }
 
 .pre-truth-message {
