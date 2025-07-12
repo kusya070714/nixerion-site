@@ -45,23 +45,21 @@
 </div>
 
   <script>
-  // Показуємо логотип
+document.addEventListener('DOMContentLoaded', () => {
+  // --- Логотип ---
   document.getElementById('stage1').style.display = 'flex';
 
-  // Через 4с — показуємо привітання
   setTimeout(() => {
     document.getElementById('stage1').style.display = 'none';
     document.getElementById('stage2').style.display = 'flex';
     const greeting = document.querySelector('.greeting');
     greeting.classList.add('fadein');
-
-    // Через 3.5с — зникає привітання
     setTimeout(() => {
       greeting.classList.add('fadeout');
     }, 3500);
   }, 4000);
 
-  // Через 9с — запускаємо слайди + звук
+  // --- Слайди ---
   setTimeout(() => {
     document.getElementById('stage2').style.display = 'none';
     document.getElementById('stage3').style.display = 'flex';
@@ -69,63 +67,59 @@
     const voice = document.getElementById('voice');
     voice.play();
 
+    // --- ПОЕТАПНА поява слайдів ---
     const slides = document.querySelectorAll('.slide');
-    const timings = [500, 5000, 11000, 17000, 22500]; // Затримка для кожного слайда
-
+    const timings = [500, 5000, 11000, 17000, 22500];
     slides.forEach((el, i) => {
       setTimeout(() => {
         el.classList.add('visible');
       }, timings[i]);
     });
 
-  }, 10000); // Після привітання
-
-  // === ВІДТЕПЕР: плавне зникнення слайдів + плавне затемнення ===
-
-  // Через 32с — ховаємо слайди і показуємо stage4 (затемнення)
-  setTimeout(() => {
-    const slides = document.querySelectorAll('.slide');
-    slides.forEach(slide => slide.classList.add('fadeout'));
-
-    // Після fadeout (2с, має збігатися з CSS transition/animation)
-    setTimeout(() => {
-      document.getElementById('stage3').style.display = 'none';
-
-      const stage4 = document.getElementById('stage4');
-      stage4.style.display = 'flex';     // показуємо затемнення
-      stage4.classList.remove('fadeout'); // прибираємо якщо був
-      stage4.style.opacity = '1';         // робимо повністю видимим
-
-      // Оновлюємо переклад (раптом мова змінилася)
-      const lang = localStorage.getItem('lang') || 'uk';
-      if (typeof applyLanguage === 'function') applyLanguage(lang);
-
-      // Плавно ховаємо stage4 через 2.5с (або будь-який інший час)
+    // --- Після закінчення аудіо запускаємо затемнення ---
+    voice.onended = () => {
+      // Плавне зникнення слайдів
+      slides.forEach(slide => slide.classList.add('fadeout'));
       setTimeout(() => {
-        stage4.classList.add('fadeout');
+        document.getElementById('stage3').style.display = 'none';
 
-        // Через 2с (після fadeout) — stage4 зникає, stage5 з'являється
+        // Показуємо stage4 (затемнення)
+        const stage4 = document.getElementById('stage4');
+        stage4.classList.remove('fadeout');
+        stage4.classList.add('show');
+        stage4.style.opacity = '1';
+
+        // Підтягуємо актуальний переклад
+        const lang = localStorage.getItem('lang') || 'uk';
+        if (typeof applyLanguage === 'function') applyLanguage(lang);
+
+        // Можна повторити появу тексту
+        const preTruth = document.querySelector('.pre-truth-message');
+        if (preTruth) {
+          preTruth.style.opacity = 0;
+          preTruth.style.animation = 'showText 2s forwards';
+        }
+
+        // Через 2.5с — fadeout stage4, потім ховаємо та показуємо stage5
         setTimeout(() => {
-          stage4.style.display = 'none';
-          document.getElementById('stage5').style.display = 'flex';
-        }, 2000);
+          stage4.classList.add('fadeout');
+          setTimeout(() => {
+            stage4.classList.remove('show');
+            stage4.style.display = 'none';
+            document.getElementById('stage5').style.display = 'flex';
+          }, 2000);
+        }, 2500);
 
-      }, 2500); // stage4 видно 2.5с
+      }, 2000); // fadeout слайдів
+    };
+  }, 10000); // після привітання
 
-    }, 2000); // після зникнення слайдів
-  }, 32000);
-</script>
-
- 
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
+  // --- Перемикання мови ---
   const languageSelector = document.getElementById('language');
   const savedLang = localStorage.getItem('lang') || 'uk';
   languageSelector.value = savedLang;
   applyLanguage(savedLang);
 
-  // Вішай одразу слухач тут — не окремо!
   languageSelector.addEventListener('change', () => {
     const lang = languageSelector.value;
     localStorage.setItem('lang', lang);
@@ -133,11 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// --- Переклад ---
 function applyLanguage(lang) {
-  // --- Переклад слайдів ---
+  // Переклад слайдів
   const slides = document.querySelectorAll('.slide');
   const translations = {
-    uk: [
+      uk: [
       "Щосекунди помирає дитина. Ми не встигаємо рятувати...",
       "Кожна хвилина — нові жертви війн. Ціна мовчання — життя...",
       "Онкологія росте швидше за науку. Ми програємо в цій гонитві...",
@@ -172,7 +167,7 @@ function applyLanguage(lang) {
     });
   }
 
-  // --- Аудіо ---
+  // Аудіо
   const voice = document.getElementById('voice');
   if (voice) {
     const voiceMap = {
@@ -184,7 +179,7 @@ function applyLanguage(lang) {
     voice.src = voiceMap[lang] || 'problems_voice.mp3';
   }
 
-  // --- Переклад для блоку "Світ у розпаді" ---
+  // Переклад для чорного фону
   const preTruthMap = {
     uk: 'Зараз ти побачиш те, що завжди було поряд. Просто не хотів бачити.',
     en: 'Now you will see what has always been near. You just didn’t want to see it.',
@@ -196,6 +191,7 @@ function applyLanguage(lang) {
     preTruthText.textContent = preTruthMap[lang];
   }
 }
+
 </script>
 
 
