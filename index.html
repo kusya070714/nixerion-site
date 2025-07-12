@@ -80,10 +80,17 @@
 
   }, 10000); // Після привітання
 
-    // Після останнього слайду — показуємо фразу перед блоком "Світ у розпаді"
+ // Після останнього слайду — показуємо фразу перед блоком "Світ у розпаді"
 setTimeout(() => {
-  document.getElementById('stage3').style.display = 'none';
-  document.getElementById('stage4').style.display = 'flex';
+  // Зникають усі слайди
+  const slides = document.querySelectorAll('.slide');
+  slides.forEach(slide => slide.classList.add('fadeout'));
+
+  // Після 1с ховаємо stage3 і показуємо затемнення
+  setTimeout(() => {
+    document.getElementById('stage3').style.display = 'none';
+    document.getElementById('stage4').style.display = 'flex';
+  }, 1000); // Після fadeout
 
   // Переходимо до наступного блоку (наприклад stage5) через 4.5с
   setTimeout(() => {
@@ -160,8 +167,20 @@ function changeLanguage() {
       fr: 'problems_voice_fr.mp3'
     };
     voice.src = voiceMap[lang] || 'problems_voice.mp3';
-  }
 
+// Переклад фрази перед блоком "Світ у розпаді"
+const preTruthMap = {
+  uk: 'Зараз ти побачиш те, що завжди було поряд. Просто не хотів бачити.',
+  en: 'Now you will see what has always been near. You just didn’t want to see it.',
+  de: 'Jetzt wirst du sehen, was immer da war. Du wolltest es nur nicht sehen.',
+  fr: 'Tu vas maintenant voir ce qui a toujours été là. Tu refusais juste de le voir.',
+};
+
+const preTruthText = document.getElementById('preTruthText');
+if (preTruthText && preTruthMap[lang]) {
+  preTruthText.textContent = preTruthMap[lang];
+}
+    
   // Викликаємо функцію для встановленої мови
   const savedLang = localStorage.getItem('lang') || 'uk';
   applyLanguage(savedLang);
