@@ -150,11 +150,9 @@ h1, h2, h3, p {
   opacity: 0;
   transition: opacity 1.2s cubic-bezier(.4,0,.2,1);
 }
-
 .slide.visible {
   opacity: 1;
 }
-
 .slide.fadeout {
   opacity: 0 !important;
   transition: opacity 2s cubic-bezier(.4,0,.2,1);
@@ -173,11 +171,9 @@ h1, h2, h3, p {
   padding: 40px;
   font-family: 'Poppins', sans-serif;
 }
-
 #stage4.show {
   display: flex;
 }
-
 #stage4.fadeout {
   opacity: 0 !important;
   transition: opacity 2s cubic-bezier(.4,0,.2,1);
