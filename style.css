@@ -147,6 +147,18 @@ h1, h2, h3, p {
   margin-right: 8px;
 }
 
+.slide,
+#stage4 {
+  opacity: 1;
+  transition: opacity 2s cubic-bezier(.4,0,.2,1);
+}
+
+.slide.fadeout,
+#stage4.fadeout {
+  opacity: 0 !important;
+  /* не чіпаємо display тут! */
+}
+
 #stage4 {
   display: none;
   justify-content: center;
@@ -158,29 +170,17 @@ h1, h2, h3, p {
   text-align: center;
   padding: 40px;
   font-family: 'Poppins', sans-serif;
-  animation: flashIn 2s ease-out;
+}
+
+#stage4.show {
+  display: flex;
 }
 
 .pre-truth-message {
   opacity: 0;
   animation: showText 2s forwards;
 }
-
 @keyframes showText {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes flashIn {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 1; }
-}
-.fadeout {
-  animation: fadeOut 1s ease forwards;
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; display: none; }
+  from { opacity: 0; transform: scale(0.95);}
+  to { opacity: 1; transform: scale(1);}
 }
