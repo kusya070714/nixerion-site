@@ -58,13 +58,16 @@
   <script>
 document.addEventListener('DOMContentLoaded', () => {
   const startBtn = document.getElementById('start-btn');
-  startBtn.style.display = 'block';
-
-  startBtn.addEventListener('click', () => {
+  if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    startBtn.style.display = 'block';
+    startBtn.addEventListener('click', () => {
+      startBtn.style.display = 'none';
+      startShow();
+    });
+  } else {
     startBtn.style.display = 'none';
-    startShow();
-  });
-
+    startShow(); // Для ПК шоу стартує одразу
+  }
   // --- Перемикання мови (залишається тут) ---
   const languageSelector = document.getElementById('language');
   const savedLang = localStorage.getItem('lang') || 'uk';
