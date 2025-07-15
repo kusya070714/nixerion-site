@@ -57,31 +57,6 @@
 
   <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const startBtn = document.getElementById('start-btn');
-  if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    startBtn.style.display = 'block';
-    startBtn.addEventListener('click', () => {
-      startBtn.style.display = 'none';
-      startShow();
-    });
-  } else {
-    startBtn.style.display = 'none';
-    startShow(); // Для ПК шоу стартує одразу
-  }
-  // --- Перемикання мови (залишається тут) ---
-  const languageSelector = document.getElementById('language');
-  const savedLang = localStorage.getItem('lang') || 'uk';
-  languageSelector.value = savedLang;
-  applyLanguage(savedLang);
-
-  languageSelector.addEventListener('change', () => {
-    const lang = languageSelector.value;
-    localStorage.setItem('lang', lang);
-    applyLanguage(lang);
-  });
-});
-
-function startShow() {
   // --- Логотип ---
   document.getElementById('stage1').style.display = 'flex';
 
@@ -101,10 +76,7 @@ function startShow() {
     document.getElementById('stage3').style.display = 'flex';
 
     const voice = document.getElementById('voice');
-    voice.play().catch(e => {
-      // Якщо щось не так — просто не граємо звук, але шоу триває
-      console.warn('Аудіо не відтворюється:', e);
-    });
+    voice.play();
 
     // --- ПОЕТАПНА поява слайдів ---
     const slides = document.querySelectorAll('.slide');
@@ -142,13 +114,90 @@ function startShow() {
             stage4.classList.remove('show');
             stage4.style.display = 'none';
             document.getElementById('intro-video').classList.add('show');
-            document.getElementById('intro-video').style.display = 'flex'; // Важливо!
           }, 2000);
         }, 2500);
 
       }, 2000); // fadeout слайдів
     }, 23000); // після показу останнього слайду!
   }, 10000); // після привітання
+
+  // --- Перемикання мови ---
+  const languageSelector = document.getElementById('language');
+  const savedLang = localStorage.getItem('lang') || 'uk';
+  languageSelector.value = savedLang;
+  applyLanguage(savedLang);
+
+  languageSelector.addEventListener('change', () => {
+    const lang = languageSelector.value;
+    localStorage.setItem('lang', lang);
+    applyLanguage(lang);
+  });
+});
+
+
+// --- Переклад ---
+function applyLanguage(lang) {
+  // Переклад слайдів
+  const slides = document.querySelectorAll('.slide');
+  const translations = {
+      uk: [
+      "Щосекунди помирає дитина. Ми не встигаємо рятувати...",
+      "Кожна хвилина — нові жертви війн. Ціна мовчання — життя...",
+      "Онкологія росте швидше за науку. Ми програємо в цій гонитві...",
+      "Цифровий контроль замінює свободу. А ти ще віриш у вибір?...",
+      "NyXerion — голос, який більше не вдасться заглушити..."
+    ],
+    en: [
+      "Every second a child dies. We don’t have time to save everyone...",
+      "Every minute — new victims of war. The cost of silence is death...",
+      "Cancer grows faster than science. We are losing the race...",
+      "Digital control replaces freedom. And you still believe in choice?...",
+      "NyXerion — a voice that will no longer be silenced..."
+    ],
+    de: [
+      "Jede Sekunde stirbt ein Kind. Wir schaffen es nicht, alle zu retten...",
+      "Jede Minute — neue Kriegsopfer. Der Preis des Schweigens ist der Tod...",
+      "Krebs wächst schneller als die Wissenschaft. Wir verlieren das Rennen...",
+      "Digitale Kontrolle ersetzt Freiheit. Glaubst du noch an die Wahl?...",
+      "NyXerion — eine Stimme, die nicht mehr zum Schweigen gebracht wird..."
+    ],
+    fr: [
+      "Chaque seconde, un enfant meurt. Nous n’avons pas le temps de sauver tous...",
+      "Chaque minute — de nouvelles victimes de guerre. Le prix du silence, c’est la mort...",
+      "Le cancer progresse plus vite que la science. Nous perdons cette course...",
+      "Le contrôle numérique remplace la liberté. Et tu crois encore au choix?...",
+      "NyXerion — une voix qu’on ne pourra plus faire taire..."
+    ]
+  };
+  if (translations[lang]) {
+    slides.forEach((el, i) => {
+      el.textContent = translations[lang][i] || '';
+    });
+  }
+
+  // Аудіо
+  const voice = document.getElementById('voice');
+  if (voice) {
+    const voiceMap = {
+      uk: 'problems_voice.mp3',
+      en: 'problems_voice_en.mp3',
+      de: 'problems_voice_de.mp3',
+      fr: 'problems_voice_fr.mp3'
+    };
+    voice.src = voiceMap[lang] || 'problems_voice.mp3';
+  }
+
+  // Переклад для чорного фону
+  const preTruthMap = {
+    uk: 'Зараз ти побачиш те, що завжди було поряд. Просто не хотів бачити.',
+    en: 'Now you will see what has always been near. You just didn’t want to see it.',
+    de: 'Jetzt wirst du sehen, was immer da war. Du wolltest es nur nicht sehen.',
+    fr: 'Tu vas maintenant voir ce qui a toujours été là. Tu refusais juste de le voir.',
+  };
+  const preTruthText = document.getElementById('preTruthText');
+  if (preTruthText && preTruthMap[lang]) {
+    preTruthText.textContent = preTruthMap[lang];
+  }
 }
 
 
