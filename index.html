@@ -86,43 +86,44 @@ document.addEventListener('DOMContentLoaded', () => {
       }, timings[i]);
     });
 
-    // --- Після закінчення аудіо запускаємо затемнення ---
-    voice.onended = () => {
-      // Плавне зникнення слайдів
-      slides.forEach(slide => slide.classList.add('fadeout'));
+// --- Плавне зникнення слайдів та перехід до затемнення і відео ---
+setTimeout(() => {
+  // Зникають усі слайди
+  slides.forEach(slide => slide.classList.add('fadeout'));
+
+  // Після 2с ховаємо stage3 і показуємо затемнення
+  setTimeout(() => {
+    document.getElementById('stage3').style.display = 'none';
+
+    // Показуємо stage4 (затемнення)
+    const stage4 = document.getElementById('stage4');
+    stage4.classList.remove('fadeout');
+    stage4.classList.add('show');
+    stage4.style.opacity = '1';
+
+    // Оновлюємо переклад (раптом мова змінилася)
+    const lang = localStorage.getItem('lang') || 'uk';
+    if (typeof applyLanguage === 'function') applyLanguage(lang);
+
+    // Поява тексту з анімацією
+    const preTruth = document.querySelector('.pre-truth-message');
+    if (preTruth) {
+      preTruth.style.opacity = 0;
+      preTruth.style.animation = 'showText 2s forwards';
+    }
+
+    // Через 2.5с — fadeout stage4, потім показуємо відео
+    setTimeout(() => {
+      stage4.classList.add('fadeout');
       setTimeout(() => {
-        document.getElementById('stage3').style.display = 'none';
+        stage4.classList.remove('show');
+        stage4.style.display = 'none';
+        document.getElementById('intro-video').classList.add('show');
+      }, 2000);
+    }, 2500);
 
-        // Показуємо stage4 (затемнення)
-        const stage4 = document.getElementById('stage4');
-        stage4.classList.remove('fadeout');
-        stage4.classList.add('show');
-        stage4.style.opacity = '1';
-
-        // Підтягуємо актуальний переклад
-        const lang = localStorage.getItem('lang') || 'uk';
-        if (typeof applyLanguage === 'function') applyLanguage(lang);
-
-        // Можна повторити появу тексту
-        const preTruth = document.querySelector('.pre-truth-message');
-        if (preTruth) {
-          preTruth.style.opacity = 0;
-          preTruth.style.animation = 'showText 2s forwards';
-        }
-
-        // Через 2.5с — fadeout stage4, потім ховаємо та показуємо stage5
-        setTimeout(() => {
-          stage4.classList.add('fadeout');
-          setTimeout(() => {
-            stage4.classList.remove('show');
-            stage4.style.display = 'none';
-              document.getElementById('intro-video').classList.add('show');
-            document.getElementById('stage5').style.display = 'flex';
-          }, 2000);
-        }, 2500);
-
-      }, 2000); // fadeout слайдів
-    };
+  }, 2000); // fadeout слайдів
+  };
   }, 10000); // після привітання
 
   // --- Перемикання мови ---
