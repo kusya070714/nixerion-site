@@ -57,6 +57,28 @@
 
   <script>
 document.addEventListener('DOMContentLoaded', () => {
+  const startBtn = document.getElementById('start-btn');
+  startBtn.style.display = 'block';
+
+  startBtn.addEventListener('click', () => {
+    startBtn.style.display = 'none';
+    startShow();
+  });
+
+  // --- Перемикання мови (залишається тут) ---
+  const languageSelector = document.getElementById('language');
+  const savedLang = localStorage.getItem('lang') || 'uk';
+  languageSelector.value = savedLang;
+  applyLanguage(savedLang);
+
+  languageSelector.addEventListener('change', () => {
+    const lang = languageSelector.value;
+    localStorage.setItem('lang', lang);
+    applyLanguage(lang);
+  });
+});
+
+function startShow() {
   // --- Логотип ---
   document.getElementById('stage1').style.display = 'flex';
 
@@ -76,7 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('stage3').style.display = 'flex';
 
     const voice = document.getElementById('voice');
-    voice.play();
+    voice.play().catch(e => {
+      // Якщо щось не так — просто не граємо звук, але шоу триває
+      console.warn('Аудіо не відтворюється:', e);
+    });
 
     // --- ПОЕТАПНА поява слайдів ---
     const slides = document.querySelectorAll('.slide');
@@ -114,12 +139,15 @@ document.addEventListener('DOMContentLoaded', () => {
             stage4.classList.remove('show');
             stage4.style.display = 'none';
             document.getElementById('intro-video').classList.add('show');
+            document.getElementById('intro-video').style.display = 'flex'; // Важливо!
           }, 2000);
         }, 2500);
 
       }, 2000); // fadeout слайдів
     }, 23000); // після показу останнього слайду!
   }, 10000); // після привітання
+}
+
 
   // --- Перемикання мови ---
   const languageSelector = document.getElementById('language');
