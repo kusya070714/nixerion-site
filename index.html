@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="uk">
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Quicksand&family=Poppins&display=swap" rel="stylesheet">
@@ -26,35 +26,37 @@
     <div class="slide" id="slide3">Онкологія росте швидше за науку. Ми втрачаємо перевагу в цій гонитві.</div>
     <div class="slide" id="slide4">Цифровий контроль замінює свободу. А ти ще віриш у вибір?</div>
     <div class="slide" id="slide5">NyXerion — голос, який більше не вдасться заглушити.</div>
-    </div>
- <!-- ЕКРАН ПЕРЕД ПРАВДОЮ -->
-<div class="stage" id="stage4">
-  <div class="pre-truth-message" id="preTruthText">Зараз ти побачиш те, що завжди було поряд. Просто не хотів бачити.</div>
-</div>
-<!-- ВІДЕО ІНТРО -->
-<div class="stage" id="intro-video" style="display:none;">
-  <iframe width="800" height="450" src="https://www.youtube.com/embed/qJO3YU6kFkY"
-    title="Демографія – Вимираюча цивілізація | NyXerion"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    style="border-radius: 16px; box-shadow: 0 0 24px #700;">
-  </iframe>
-</div>
+  </div>
+
+  <!-- ЕКРАН ПЕРЕД ПРАВДОЮ -->
+  <div class="stage" id="stage4">
+    <div class="pre-truth-message" id="preTruthText">Зараз ти побачиш те, що завжди було поряд. Просто не хотів бачити.</div>
+  </div>
+
+  <!-- ВІДЕО ІНТРО -->
+  <div class="stage" id="intro-video" style="display:none;">
+    <iframe width="800" height="450" src="https://www.youtube.com/embed/qJO3YU6kFkY"
+      title="Демографія – Вимираюча цивілізація | NyXerion"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      style="border-radius: 16px; box-shadow: 0 0 24px #700;">
+    </iframe>
+  </div>
 
   <audio id="voice" src="problems_voice.mp3"></audio>
   <div class="language-selector">
-  <label for="language">🌐 Мова: </label>
-  <select id="language" onchange="changeLanguage()">
-    <option value="uk" selected>Українська</option>
-    <option value="en">English</option>
-    <option value="de">Deutsch</option>
-    <option value="fr">Français</option>
-    <!-- додай інші мови за потребою -->
-  </select>
-</div>
+    <label for="language">🌐 Мова: </label>
+    <select id="language">
+      <option value="uk" selected>Українська</option>
+      <option value="en">English</option>
+      <option value="de">Deutsch</option>
+      <option value="fr">Français</option>
+      <!-- додай інші мови за потребою -->
+    </select>
+  </div>
 
-  <script>
+<script>
 document.addEventListener('DOMContentLoaded', () => {
   // --- Логотип ---
   document.getElementById('stage1').style.display = 'flex';
@@ -133,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
 // --- Переклад ---
 function applyLanguage(lang) {
   // Переклад слайдів
@@ -198,91 +199,7 @@ function applyLanguage(lang) {
     preTruthText.textContent = preTruthMap[lang];
   }
 }
-
-
-  // --- Перемикання мови ---
-  const languageSelector = document.getElementById('language');
-  const savedLang = localStorage.getItem('lang') || 'uk';
-  languageSelector.value = savedLang;
-  applyLanguage(savedLang);
-
-  languageSelector.addEventListener('change', () => {
-    const lang = languageSelector.value;
-    localStorage.setItem('lang', lang);
-    applyLanguage(lang);
-  });
-});
-
-
-// --- Переклад ---
-function applyLanguage(lang) {
-  // Переклад слайдів
-  const slides = document.querySelectorAll('.slide');
-  const translations = {
-      uk: [
-      "Щосекунди помирає дитина. Ми не встигаємо рятувати...",
-      "Кожна хвилина — нові жертви війн. Ціна мовчання — життя...",
-      "Онкологія росте швидше за науку. Ми програємо в цій гонитві...",
-      "Цифровий контроль замінює свободу. А ти ще віриш у вибір?...",
-      "NyXerion — голос, який більше не вдасться заглушити..."
-    ],
-    en: [
-      "Every second a child dies. We don’t have time to save everyone...",
-      "Every minute — new victims of war. The cost of silence is death...",
-      "Cancer grows faster than science. We are losing the race...",
-      "Digital control replaces freedom. And you still believe in choice?...",
-      "NyXerion — a voice that will no longer be silenced..."
-    ],
-    de: [
-      "Jede Sekunde stirbt ein Kind. Wir schaffen es nicht, alle zu retten...",
-      "Jede Minute — neue Kriegsopfer. Der Preis des Schweigens ist der Tod...",
-      "Krebs wächst schneller als die Wissenschaft. Wir verlieren das Rennen...",
-      "Digitale Kontrolle ersetzt Freiheit. Glaubst du noch an die Wahl?...",
-      "NyXerion — eine Stimme, die nicht mehr zum Schweigen gebracht wird..."
-    ],
-    fr: [
-      "Chaque seconde, un enfant meurt. Nous n’avons pas le temps de sauver tous...",
-      "Chaque minute — de nouvelles victimes de guerre. Le prix du silence, c’est la mort...",
-      "Le cancer progresse plus vite que la science. Nous perdons cette course...",
-      "Le contrôle numérique remplace la liberté. Et tu crois encore au choix?...",
-      "NyXerion — une voix qu’on ne pourra plus faire taire..."
-    ]
-  };
-  if (translations[lang]) {
-    slides.forEach((el, i) => {
-      el.textContent = translations[lang][i] || '';
-    });
-  }
-
-  // Аудіо
-  const voice = document.getElementById('voice');
-  if (voice) {
-    const voiceMap = {
-      uk: 'problems_voice.mp3',
-      en: 'problems_voice_en.mp3',
-      de: 'problems_voice_de.mp3',
-      fr: 'problems_voice_fr.mp3'
-    };
-    voice.src = voiceMap[lang] || 'problems_voice.mp3';
-  }
-
-  // Переклад для чорного фону
-  const preTruthMap = {
-    uk: 'Зараз ти побачиш те, що завжди було поряд. Просто не хотів бачити.',
-    en: 'Now you will see what has always been near. You just didn’t want to see it.',
-    de: 'Jetzt wirst du sehen, was immer da war. Du wolltest es nur nicht sehen.',
-    fr: 'Tu vas maintenant voir ce qui a toujours été là. Tu refusais juste de le voir.',
-  };
-  const preTruthText = document.getElementById('preTruthText');
-  if (preTruthText && preTruthMap[lang]) {
-    preTruthText.textContent = preTruthMap[lang];
-  }
-}
-
 </script>
-
 
 </body>
 </html>
-
-
