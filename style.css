@@ -221,3 +221,8 @@ h1, h2, h3, p {
 .start-btn:hover {
   background: #700;
 }
+@media (min-width: 600px) {
+  .start-btn {
+    display: none !important;
+  }
+}
