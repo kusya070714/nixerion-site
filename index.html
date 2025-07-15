@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- ПОЕТАПНА поява слайдів ---
     const slides = document.querySelectorAll('.slide');
     const timings = [500, 5000, 11000, 17000, 22500];
-    const lastSlideVisibleTime = 4000; // тримати останній слайд ще 4 секунди
+    const lastSlideVisibleTime = 4000; // 4 секунди пауза після останнього слайду
 
     slides.forEach((el, i) => {
       setTimeout(() => {
@@ -121,10 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2500);
 
       }, 2000); // fadeout слайдів
-    }, timings[timings.length - 1] + lastSlideVisibleTime); // fadeout ПІСЛЯ 4 сек після останнього слайду!
-  }, 10000); // після привітання
-});
+    }, timings[timings.length - 1] + lastSlideVisibleTime); // тут +4 сек після останнього слайду!
 
+  }, 10000); // після привітання
 
   // --- Перемикання мови ---
   const languageSelector = document.getElementById('language');
@@ -138,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     applyLanguage(lang);
   });
 });
-
 // --- Переклад ---
 function applyLanguage(lang) {
   // Переклад слайдів
