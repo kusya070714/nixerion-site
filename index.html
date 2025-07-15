@@ -32,15 +32,14 @@
   <div class="pre-truth-message" id="preTruthText">Зараз ти побачиш те, що завжди було поряд. Просто не хотів бачити.</div>
 </div>
 <!-- ВІДЕО ІНТРО -->
-<div class="stage" id="intro-video" style="text-align:center; margin: 32px 0;">
-    <iframe width="800" height="450"
-        src="https://www.youtube.com/embed/qJO3YU6kFkY"
-        title="Демографія — Вимираюча цивілізація | NyXerion"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-        style="border-radius: 16px; box-shadow: 0 0 24px #700;">
-    </iframe>
+<div class="stage" id="stage5" style="display:none;">
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/qJO3YU6kFkY"
+    title="Демографія – Вимираюча цивілізація | NyXerion"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="border-radius: 16px; box-shadow: 0 0 24px #700;">
+  </iframe>
 </div>
 
   <audio id="voice" src="problems_voice.mp3"></audio>
@@ -117,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
           setTimeout(() => {
             stage4.classList.remove('show');
             stage4.style.display = 'none';
+              document.getElementById('intro-video').classList.add('show');
             document.getElementById('stage5').style.display = 'flex';
           }, 2000);
         }, 2500);
