@@ -127,6 +127,19 @@ document.addEventListener('DOMContentLoaded', () => {
             stage4.classList.remove('show');
             stage4.style.display = 'none';
             document.getElementById('intro-video').classList.add('show');
+           // Через 12 секунд після старту intro-video — зменшити його і показати наступне
+setTimeout(() => {
+  const intro = document.getElementById('intro-video');
+  intro.style.transition = 'all 1.5s ease';
+  intro.style.transform = 'scale(0.3)';
+  intro.style.position = 'fixed';
+  intro.style.top = '12px';
+  intro.style.left = '12px';
+  intro.style.zIndex = '10';
+
+  document.getElementById('next-video').classList.add('show');
+}, 12000);
+
           }, 2000);
         }, 2500);
 
