@@ -262,3 +262,7 @@ h1, h2, h3, p {
   display: flex !important;
   animation: fadeIn 1.5s;
 }
+#intro-video {
+  transform-origin: top left;
+}
+
