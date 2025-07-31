@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('intro-video').classList.add('show');
            // Через 12 секунд після старту intro-video — зменшити його і показати наступне
 setTimeout(() => {
-  const intro = document.getElementById('intro-video');
+  const intro = document.querySelector('#intro-video iframe');
   intro.style.transition = 'all 1.5s ease';
   intro.style.transform = 'scale(0.3)';
   intro.style.position = 'fixed';
