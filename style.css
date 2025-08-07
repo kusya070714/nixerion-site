@@ -296,7 +296,11 @@ h1, h2, h3, p {
   background-color: #cc0000;
 }
 
-#next-video iframe {
-  position: relative;
-  z-index: 1; /* щоб не накривало кнопки */
+/* Піднімаємо кнопки над відео */
+.button-group {
+  z-index: 1001;
+}
+
+.red-button {
+  z-index: 1001;
 }
