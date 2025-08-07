@@ -272,23 +272,25 @@ h1, h2, h3, p {
 
 #whitepaper-button {
   text-align: center;
-  margin-top: 30px;
-  margin-bottom: 20px;
+  margin-top: 40px;
+  margin-bottom: 30px;
 }
 
 #whitepaper-button a {
   display: inline-block;
-  background-color: #e60026;
-  color: #fff;
-  padding: 12px 24px;
-  font-size: 18px;
+  background-color: #ff1a1a;
+  color: white;
+  padding: 14px 28px;
+  font-size: 20px;
   font-weight: bold;
-  border-radius: 8px;
+  border-radius: 10px;
   text-decoration: none;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #whitepaper-button a:hover {
-  background-color: #c40020;
-  transform: scale(1.05);
+  background-color: #cc0000;
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
 }
