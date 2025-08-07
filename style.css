@@ -269,3 +269,26 @@ h1, h2, h3, p {
   transform-origin: top left;
   position: relative;
 }
+
+#whitepaper-button {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+#whitepaper-button a {
+  display: inline-block;
+  background-color: #e60026;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#whitepaper-button a:hover {
+  background-color: #c40020;
+  transform: scale(1.05);
+}
