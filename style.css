@@ -295,3 +295,8 @@ h1, h2, h3, p {
 .red-button:hover {
   background-color: #cc0000;
 }
+
+#next-video iframe {
+  position: relative;
+  z-index: 1; /* щоб не накривало кнопки */
+}
