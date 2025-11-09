@@ -334,6 +334,7 @@ max-height: 551px;
   transition: all 1.5s ease-in-out;
 }
 
+/* Контейнер — лише для позиціювання */
 #third-video {
   display: none;
   justify-content: center;
@@ -343,12 +344,14 @@ max-height: 551px;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 900;
-  box-shadow: none; /* прибираємо тінь із контейнера */
-  border: none; /* і рамку */
   width: auto;
   height: auto;
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
+/* Саме відео з червоною рамкою */
 #third-video iframe {
   width: 70vw;
   height: 39.375vw;
@@ -358,7 +361,9 @@ max-height: 551px;
   border-radius: 12px;
   box-shadow: 0 0 16px red;
   display: block;
+  background: black;
 }
+
 
 
 
