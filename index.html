@@ -140,34 +140,31 @@ document.addEventListener('DOMContentLoaded', () => {
           preTruth.style.animation = 'showText 2s forwards';
         }
 
-        setTimeout(() => {
-  stage4.classList.add('fadeout');
+       setTimeout(() => {
+  stage4.classList.remove('show');
+  stage4.style.display = 'none';
+
+  const introContainer = document.getElementById('intro-video');
+  const intro = document.querySelector('#intro-video iframe');
+  const next = document.getElementById('next-video');
+  const third = document.getElementById('third-video'); // <- одразу тут, не всередині setTimeout
+
+  introContainer.classList.add('show');
+
+  // Через 12 сек — зменшуємо intro і показуємо next
   setTimeout(() => {
-    stage4.classList.remove('show');
-    stage4.style.display = 'none';
+    intro.classList.add('minimized');
+    next.classList.add('show');
 
-    const introContainer = document.getElementById('intro-video');
-    const intro = document.querySelector('#intro-video iframe');
-    const next = document.getElementById('next-video');
-
-    introContainer.classList.add('show');
-
-    // Через 12 сек — зменшуємо intro і показуємо next
+    // Ще через 12 сек — показуємо третє відео
     setTimeout(() => {
-      intro.classList.add('minimized');
-      next.classList.add('show');
-     
-     // Ще через 12 сек — показуємо третє відео
-  setTimeout(() => {
-    const third = document.getElementById('third-video');
-    third.classList.add('show');
+      third.classList.add('show');
+    }, 12000);
+
   }, 12000);
 
-}, 12000);
-
-    }, 12000);
-  }, 2000);
 }, 2500);
+
 
 document.querySelector('#intro-video iframe').addEventListener('click', () => {
   const intro = document.querySelector('#intro-video iframe');
