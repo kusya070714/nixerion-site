@@ -236,7 +236,9 @@ h1, h2, h3, p {
   width: 70vw;
   height: 39.375vw;
   max-width: 980px;
-  max-height: 551px;
+  Nyxerion Origin
+Ніхто не підписався
+max-height: 551px;
   border: none;
   border-radius: 12px;
   box-shadow: 0 0 16px red;
@@ -341,6 +343,10 @@ h1, h2, h3, p {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 900;
+  box-shadow: none; /* прибираємо тінь із контейнера */
+  border: none; /* і рамку */
+  width: auto;
+  height: auto;
 }
 
 #third-video iframe {
@@ -348,9 +354,12 @@ h1, h2, h3, p {
   height: 39.375vw;
   max-width: 980px;
   max-height: 551px;
+  border: none;
   border-radius: 12px;
   box-shadow: 0 0 16px red;
+  display: block;
 }
+
 
 
 #third-video.show {
