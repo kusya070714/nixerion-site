@@ -308,7 +308,7 @@ h1, h2, h3, p {
 
 /* === Позиції для трьох відео === */
 
-/* Перше відео після мінімізації */
+/* Перше відео після мінімізації — вліво вгору */
 #intro-video iframe.minimized-left {
   position: fixed;
   top: 20px;
@@ -320,7 +320,7 @@ h1, h2, h3, p {
   transition: all 1.5s ease-in-out;
 }
 
-/* Друге відео після мінімізації */
+/* Друге відео після мінімізації — вправо вгору */
 #next-video iframe.minimized-right {
   position: fixed;
   top: 20px;
@@ -332,16 +332,25 @@ h1, h2, h3, p {
   transition: all 1.5s ease-in-out;
 }
 
-/* Третє відео — велике в центрі */
-#third-video.show {
-  display: flex !important;
-  animation: fadeIn 1.5s ease;
+/* Третє відео — велике по центру */
+#third-video {
+  display: none;
   justify-content: center;
   align-items: center;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 70vw;
+  height: 39.375vw;
+  max-width: 980px;
+  max-height: 551px;
+  border-radius: 12px;
+  box-shadow: 0 0 16px red;
   z-index: 900;
 }
 
+#third-video.show {
+  display: flex !important;
+  animation: fadeIn 1.5s ease;
+}
