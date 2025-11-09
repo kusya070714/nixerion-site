@@ -54,6 +54,19 @@
   </iframe>
 </div>
 
+ <!-- ТРЕТЄ ВІДЕО: Голос Ерiона -->
+<div class="stage" id="third-video" style="display:none;">
+  <iframe
+    width="800" height="450"
+    src="https://www.youtube.com/embed/xFnJa-aZou0"
+    title="Голос Ерiона | NyXerion"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    style="border-radius: 16px; box-shadow: 0 0 24px #f00;">
+  </iframe>
+</div>
+
  <!-- КНОПКИ: Whitepaper + Комерційна пропозиція -->
 <div class="button-group">
   <a href="whitepaper_nyxerion.pdf" target="_blank" class="red-button">📄 Whitepaper</a>
@@ -142,13 +155,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     introContainer.classList.add('show');
 
-    // Через 12 сек — зменшуємо intro і показуємо next
-    setTimeout(() => {
-      intro.classList.add('minimized');
-      next.classList.add('show');
-    }, 12000);
-  }, 2000);
-}, 2500);
+// Через 12 сек — зменшуємо intro і показуємо next + потім третє
+setTimeout(() => {
+  intro.classList.add('minimized');
+  next.classList.add('show');
+
+  // Через ще 12 сек — показуємо третє відео
+  setTimeout(() => {
+    const third = document.getElementById('third-video');
+    third.classList.add('show');
+  }, 12000);
+}, 12000);
+
 
 document.querySelector('#intro-video iframe').addEventListener('click', () => {
   const intro = document.querySelector('#intro-video iframe');
