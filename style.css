@@ -309,12 +309,10 @@ max-height: 551px;
 
 
 /* === Позиції для трьох відео === */
-
-/* Перше відео після мінімізації — вліво вгору */
 #intro-video iframe.minimized-left {
   position: fixed;
   top: 20px;
-  left: 20px;
+  left: calc(50% - 260px); /* трохи лівіше від центру */
   width: 240px;
   height: 135px;
   z-index: 1000;
@@ -322,17 +320,18 @@ max-height: 551px;
   transition: all 1.5s ease-in-out;
 }
 
-/* Друге відео після мінімізації — вправо вгору */
 #next-video iframe.minimized-right {
   position: fixed;
   top: 20px;
-  right: 20px;
+  left: calc(50% + 20px); /* трохи правіше від центру, 20px від першого */
   width: 240px;
   height: 135px;
   z-index: 1000;
   box-shadow: 0 0 8px red;
   transition: all 1.5s ease-in-out;
 }
+
+
 
 /* Контейнер — лише для позиціювання */
 #third-video {
