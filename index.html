@@ -156,6 +156,15 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       intro.classList.add('minimized');
       next.classList.add('show');
+     
+     // Ще через 12 сек — показуємо третє відео
+  setTimeout(() => {
+    const third = document.getElementById('third-video');
+    third.classList.add('show');
+  }, 12000);
+
+}, 12000);
+
     }, 12000);
   }, 2000);
 }, 2500);
