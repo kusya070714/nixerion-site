@@ -154,23 +154,21 @@ setTimeout(() => {
     // показуємо перше відео
     introContainer.classList.add('show');
 
-    // через 12 сек — зменшуємо перше і показуємо друге
+    // через 12 сек — мінімізуємо перше і показуємо друге
     setTimeout(() => {
       intro.classList.add('minimized-left');
       next.classList.add('show');
 
-      // ще через 12 сек — зменшуємо друге і показуємо третє
+      // ще через 12 сек — мінімізуємо друге і показуємо третє
       setTimeout(() => {
         nextFrame.classList.add('minimized-right');
         third.classList.add('show');
       }, 12000);
-
     }, 12000);
 
   }, 2000);
 }, 2500);
 
-        
 
       }, 2000); // fadeout слайдів
     }, timings[timings.length - 1] + lastSlideVisibleTime); // тут +4 сек після останнього слайду!
