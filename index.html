@@ -31,30 +31,33 @@
   <!-- ЕКРАН ПЕРЕД ПРАВДОЮ -->
   <div class="stage" id="stage4">
     <div class="pre-truth-message" id="preTruthText">Зараз ти побачиш те, що завжди було поряд. Просто не хотів бачити.</div>
-  </div>
+  </div> 
+ 
+<!-- ВІДЕО ІНТРО -->
+<div class="stage" id="intro-video" style="display:none;">
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/qJO3YU6kFkY"
+    title="Демографія – Вимираюча цивілізація | NyXerion"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="border-radius: 16px; box-shadow: 0 0 24px #700;">
+  </iframe>
+</div>
 
-  <!-- ВІДЕО ІНТРО -->
-  <div class="stage" id="intro-video" style="display:none;">
-    <iframe width="800" height="450" src="https://www.youtube.com/embed/qJO3YU6kFkY"
-      title="Демографія – Вимираюча цивілізація | NyXerion"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen
-      style="border-radius: 16px; box-shadow: 0 0 24px #700;">
-    </iframe>
-  </div>
-<!-- ДОДАЙ ЦЕ ПІСЛЯ intro-video -->
-<div class="stage" id="next-video">
+<!-- ДРУГЕ ВІДЕО -->
+<div class="stage" id="next-video" style="display:none;">
   <iframe
+    width="800" height="450"
     src="https://www.youtube.com/embed/qjy8jYU8ITg"
     title="Війна як бізнес | NyXerion"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
+    allowfullscreen
+    style="border-radius: 16px; box-shadow: 0 0 24px #444;">
   </iframe>
 </div>
 
- <!-- ТРЕТЄ ВІДЕО: Голос Ерiона -->
+<!-- ТРЕТЄ ВІДЕО: Голос Ерiона -->
 <div class="stage" id="third-video" style="display:none;">
   <iframe
     width="800" height="450"
@@ -66,6 +69,8 @@
     style="border-radius: 16px; box-shadow: 0 0 24px #f00;">
   </iframe>
 </div>
+
+  
 
  <!-- КНОПКИ: Whitepaper + Комерційна пропозиція -->
 <div class="button-group">
@@ -143,34 +148,34 @@ document.addEventListener('DOMContentLoaded', () => {
           preTruth.style.animation = 'showText 2s forwards';
         }
 
-        setTimeout(() => {
+setTimeout(() => {
   stage4.classList.add('fadeout');
   setTimeout(() => {
     stage4.classList.remove('show');
     stage4.style.display = 'none';
 
     const introContainer = document.getElementById('intro-video');
-    const intro = document.querySelector('#intro-video iframe');
     const next = document.getElementById('next-video');
-
-    introContainer.classList.add('show');
-
-// Через 12 сек — зменшуємо intro і показуємо next + потім третє
-setTimeout(() => {
-  intro.classList.add('minimized');
-  next.classList.add('show');
-
-  // Через ще 12 сек — показуємо третє відео
-  setTimeout(() => {
     const third = document.getElementById('third-video');
-    third.classList.add('show');
-  }, 12000);
-}, 12000);
 
+    // показуємо перше відео
+    introContainer.style.display = 'flex';
 
-document.querySelector('#intro-video iframe').addEventListener('click', () => {
-  const intro = document.querySelector('#intro-video iframe');
-  const next = document.getElementById('next-video');
+    // через 12 сек — друге
+    setTimeout(() => {
+      introContainer.style.display = 'none';
+      next.style.display = 'flex';
+
+      // ще через 12 сек — третє
+      setTimeout(() => {
+        next.style.display = 'none';
+        third.style.display = 'flex';
+      }, 12000);
+    }, 12000);
+
+  }, 2000);
+}, timings[timings.length - 1] + lastSlideVisibleTime);
+
 
   if (intro.classList.contains('minimized')) {
     intro.classList.remove('minimized');
