@@ -139,8 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
           preTruth.style.opacity = 0;
           preTruth.style.animation = 'showText 2s forwards';
         }
-
-        setTimeout(() => {
+setTimeout(() => {
   stage4.classList.add('fadeout');
   setTimeout(() => {
     stage4.classList.remove('show');
@@ -149,26 +148,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const introContainer = document.getElementById('intro-video');
     const intro = document.querySelector('#intro-video iframe');
     const next = document.getElementById('next-video');
+    const nextFrame = document.querySelector('#next-video iframe');
+    const third = document.getElementById('third-video');
 
+    // показуємо перше відео
     introContainer.classList.add('show');
 
-    // Через 12 сек — зменшуємо intro і показуємо next
+    // через 12 сек — зменшуємо перше і показуємо друге
     setTimeout(() => {
-      intro.classList.add('minimized');
+      intro.classList.add('minimized-left');
       next.classList.add('show');
+
+      // ще через 12 сек — зменшуємо друге і показуємо третє
+      setTimeout(() => {
+        nextFrame.classList.add('minimized-right');
+        third.classList.add('show');
+      }, 12000);
+
     }, 12000);
+
   }, 2000);
 }, 2500);
 
-document.querySelector('#intro-video iframe').addEventListener('click', () => {
-  const intro = document.querySelector('#intro-video iframe');
-  const next = document.getElementById('next-video');
-
-  if (intro.classList.contains('minimized')) {
-    intro.classList.remove('minimized');
-    next.classList.remove('show');
-  }
-});
+        
 
       }, 2000); // fadeout слайдів
     }, timings[timings.length - 1] + lastSlideVisibleTime); // тут +4 сек після останнього слайду!
