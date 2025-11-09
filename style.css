@@ -332,7 +332,6 @@ h1, h2, h3, p {
   transition: all 1.5s ease-in-out;
 }
 
-/* Третє відео — велике по центру */
 #third-video {
   display: none;
   justify-content: center;
@@ -341,14 +340,18 @@ h1, h2, h3, p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 900;
+}
+
+#third-video iframe {
   width: 70vw;
   height: 39.375vw;
   max-width: 980px;
   max-height: 551px;
   border-radius: 12px;
   box-shadow: 0 0 16px red;
-  z-index: 900;
 }
+
 
 #third-video.show {
   display: flex !important;
