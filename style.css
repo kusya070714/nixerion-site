@@ -368,6 +368,6 @@ max-height: 551px;
 
 
 #third-video.show {
-  display: flex !important;
+  display: none; !important;
   animation: fadeIn 1.5s ease;
 }
