@@ -1,4 +1,4 @@
-body {
+ body {
   margin: 0;
   font-family: 'Comfortaa', 'Quicksand', 'Poppins', sans-serif;
   color: red;
@@ -205,7 +205,6 @@ h1, h2, h3, p {
   }
 }
 
-/* ===== ПЕРШЕ ВІДЕО ===== */
 #intro-video {
   display: none;
   justify-content: center;
@@ -231,9 +230,10 @@ h1, h2, h3, p {
   }
 }
 
+/* Анімація відео: зменшення та поява другого */
 #intro-video iframe {
   width: 70vw;
-  height: 39.375vw;
+  height: 39.375vw; /* 16:9 */
   max-width: 980px;
   max-height: 551px;
   border: none;
@@ -253,7 +253,6 @@ h1, h2, h3, p {
   transition: all 1.5s ease-in-out;
 }
 
-/* ===== ДРУГЕ ВІДЕО ===== */
 #next-video {
   display: none;
   justify-content: center;
@@ -294,74 +293,11 @@ h1, h2, h3, p {
   }
 }
 
-/* Перше відео — зверху зліва */
-#intro-video iframe.minimized-left {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  width: 240px;
-  height: 135px;
-  z-index: 9998;
-  box-shadow: 0 0 8px red;
-  transition: all 1.5s ease-in-out;
+#intro-video {
+  transform-origin: top left;
+  position: relative;
 }
 
-/* Друге відео — поруч з першим */
-#next-video iframe.minimized-right {
-  position: fixed;
-  top: 20px;
-  left: 280px;
-  width: 240px;
-  height: 135px;
-  z-index: 9998;
-  box-shadow: 0 0 8px red;
-  transition: all 1.5s ease-in-out;
-}
-
-/* ===== ТРЕТЄ ВІДЕО ===== */
-#third-video {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  padding: 32px 0;
-  width: 100%;
-}
-
-#third-video.show {
-  display: flex !important;
-  animation: fadeIn 1.5s;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9997;
-}
-
-#third-video iframe {
-  width: 70vw;
-  height: 39.375vw;
-  max-width: 980px;
-  max-height: 551px;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 0 16px red;
-  animation: fadeInNext 2s ease-in;
-  transition: all 2s ease-in-out;
-}
-
-/* Третє відео зменшене — стає поруч з другим */
-#third-video iframe.minimized-third {
-  position: fixed;
-  top: 20px;
-  left: 540px;
-  width: 240px;
-  height: 135px;
-  z-index: 9998;
-  box-shadow: 0 0 8px red;
-  transition: all 1.5s ease-in-out;
-}
-
-/* Кнопки */
 .button-group {
   display: flex;
   justify-content: center;
@@ -391,8 +327,77 @@ h1, h2, h3, p {
   background-color: #cc0000;
 }
 
+/* Перше відео — зверху зліва */
+#intro-video iframe.minimized-left {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 240px;
+  height: 135px;
+  z-index: 9998;
+  box-shadow: 0 0 8px red;
+  transition: all 1.5s ease-in-out;
+}
+
+/* Друге відео — поруч з першим */
+#next-video iframe.minimized-right {
+  position: fixed;
+  top: 20px;
+  left: 280px;
+  width: 240px;
+  height: 135px;
+  z-index: 9998;
+  box-shadow: 0 0 8px red;
+  transition: all 1.5s ease-in-out;
+}
+
+/* ТРЕТЄ ВІДЕО — ТЕПЕР ПОВОДИТЬСЯ ЯК ПЕРШІ ДВА */
+#third-video {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 0;
+  width: 100%;
+  position: relative;
+  z-index: 9997;
+}
+
+#third-video.show {
+  display: flex !important;
+  animation: fadeIn 1.5s;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#third-video iframe {
+  width: 70vw;
+  height: 39.375vw;
+  max-width: 980px;
+  max-height: 551px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 16px red;
+  animation: fadeInNext 2s ease-in;
+  transition: all 2s ease-in-out;
+}
+
+/* Третє відео зменшене — стає поруч з другим */
+#third-video iframe.minimized-third {
+  position: fixed;
+  top: 20px;
+  left: 540px; /* 20px + 240px + 20px + 240px + 20px = 540px */
+  width: 240px;
+  height: 135px;
+  z-index: 9998;
+  box-shadow: 0 0 8px red;
+  transition: all 1.5s ease-in-out;
+}
+
 /* АДАПТАЦІЯ ДЛЯ МАЛИХ ЕКРАНІВ */
 @media (max-width: 1100px) {
+  /* Якщо екран вузький, ставимо зменшені відео вертикально */
   #intro-video iframe.minimized-left,
   #next-video iframe.minimized-right,
   #third-video iframe.minimized-third {
@@ -407,16 +412,17 @@ h1, h2, h3, p {
   }
 
   #next-video iframe.minimized-right {
-    top: 152px;
+    top: 152px; /* 20px + 112px + 20px */
     left: 20px;
   }
 
   #third-video iframe.minimized-third {
-    top: 284px;
+    top: 284px; /* 20px + 112px + 20px + 112px + 20px */
     left: 20px;
   }
 }
 
+/* Для дуже малих екранів */
 @media (max-width: 600px) {
   #intro-video iframe.minimized-left,
   #next-video iframe.minimized-right,
@@ -426,10 +432,10 @@ h1, h2, h3, p {
   }
 
   #next-video iframe.minimized-right {
-    top: 124px;
+    top: 124px; /* 20px + 84px + 20px */
   }
 
   #third-video iframe.minimized-third {
-    top: 228px;
+    top: 228px; /* 20px + 84px + 20px + 84px + 20px */
   }
 }
