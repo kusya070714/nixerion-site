@@ -9,6 +9,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, p {
@@ -34,6 +35,7 @@ h1, h2, h3, p {
   align-items: center;
   flex-direction: column;
   height: 100vh;
+  position: relative;
 }
 
 .logo-fullscreen {
@@ -123,10 +125,10 @@ h1, h2, h3, p {
 }
 
 .language-selector {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 9999;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 8px 12px;
   border-radius: 8px;
@@ -209,6 +211,7 @@ h1, h2, h3, p {
   align-items: center;
   padding: 32px 0;
   text-align: center;
+  width: 100%;
 }
 
 #intro-video.show {
@@ -246,7 +249,7 @@ h1, h2, h3, p {
   width: 240px;
   height: 135px;
   box-shadow: 0 0 8px red;
-  z-index: 1000;
+  z-index: 9998;
   transition: all 1.5s ease-in-out;
 }
 
@@ -255,6 +258,7 @@ h1, h2, h3, p {
   justify-content: center;
   align-items: center;
   padding: 32px 0;
+  width: 100%;
 }
 
 #next-video.show {
@@ -264,7 +268,7 @@ h1, h2, h3, p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 999;
+  z-index: 9997;
 }
 
 #next-video iframe {
@@ -301,7 +305,7 @@ h1, h2, h3, p {
   gap: 20px;
   margin: 10px 0 80px 0;
   position: relative;
-  z-index: 1001;
+  z-index: 9999;
 }
 
 .red-button {
@@ -313,20 +317,14 @@ h1, h2, h3, p {
   border-radius: 8px;
   transition: background-color 0.3s ease;
   position: relative;
-  z-index: 10;
+  z-index: 9999;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
 }
 
 .red-button:hover {
   background-color: #cc0000;
-}
-
-/* Піднімаємо кнопки над відео */
-.button-group {
-  z-index: 1001;
-}
-
-.red-button {
-  z-index: 1001;
 }
 
 /* Перше відео — зверху зліва */
@@ -336,7 +334,7 @@ h1, h2, h3, p {
   left: 20px;
   width: 240px;
   height: 135px;
-  z-index: 1000;
+  z-index: 9998;
   box-shadow: 0 0 8px red;
   transition: all 1.5s ease-in-out;
 }
@@ -348,36 +346,74 @@ h1, h2, h3, p {
   left: 280px;
   width: 240px;
   height: 135px;
-  z-index: 1000;
+  z-index: 9998;
   box-shadow: 0 0 8px red;
   transition: all 1.5s ease-in-out;
 }
 
-/* Контейнер для третього відео */
+/* ФІКС ДЛЯ ТРЕТЬОГО ВІДЕО */
 #third-video {
   display: none;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 900;
-  width: 70vw;
-  max-width: 980px;
-  height: auto;
-}
-
-/* Саме відео з червоною рамкою */
-#third-video iframe {
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 56.25vw; /* 16:9 пропорція */
-  max-height: 551px;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 0 16px red;
-  background: black;
+  height: 100%;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
 
 #third-video.show {
-  display: block !important;
-  animation: fadeIn 1.5s ease;
+  display: flex !important;
+  opacity: 1;
+}
+
+#third-video iframe {
+  width: 90vw;
+  height: 50.625vw; /* 16:9 пропорція */
+  max-width: 1200px;
+  max-height: 675px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 30px red, 0 0 60px rgba(255, 0, 0, 0.3);
+  background: black;
+  animation: videoPulse 3s infinite alternate;
+}
+
+@keyframes videoPulse {
+  0% {
+    box-shadow: 0 0 20px red, 0 0 40px rgba(255, 0, 0, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 30px red, 0 0 60px rgba(255, 0, 0, 0.5);
+  }
+}
+
+/* Кнопка закриття для третього відео */
+.close-third-video {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.close-third-video:hover {
+  transform: scale(1.1);
+  background: #cc0000;
 }
